@@ -4,16 +4,16 @@ const passport= require('passport');
 
 
 module.exports.register= (req, res, next) =>{
-    res.render('/register')
+    res.render('register')
 };
 
 
 module.exports.doRegister= (req, res, next)=>{
     function renderWithErrors (errors){
-    res.render('/register', {
-        user:req.body,
-        errors:errors
-    })
+        res.render('register', {
+            user:req.body,
+            errors:errors
+        })
     }
 
     User.findOne({

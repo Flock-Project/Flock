@@ -4,9 +4,9 @@ const controller= require('../controllers/register.controller')
 
 
 
-router.get('/register', controller.register)
+router.get('/', controller.register)
 
-router.post('/register', controller.doRegister)
+router.post('/', controller.doRegister)
 
 
 
