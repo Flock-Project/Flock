@@ -9,37 +9,31 @@ module.exports.register= (req, res, next) =>{
 
 
 module.exports.doRegister= (req, res, next)=>{
-    function renderWithErrors (errors){
-        res.render('register', {
+    function renderWithErrors(errors) {
+        return res.render('register', {
             user:req.body,
             errors:errors
         })
     }
 
-    User.findOne({
-        email:req.body.email, 
-        username:req.body.username
-    })
-    .then(user=>{
+    User.findOne({ email:req.body.email })
+        .then(user=>{
         if (user){
             renderWithErrors({
                 email:"Email already registered"
             })
-        } else if (user){
-            renderWithErrors({
-                username:"Username already registered"
-            })
         }else{
             user= new User(req.body);
-            return user.save()
-            .then(user=> res.redirect("/login"))
+            return user.save()            
         }
     })
-    .catch(errors=>{
+    .then(user => res.redirect("/login"))
+    .catch(error=>{
         if(error instanceof mongoose.Error.ValidationError){
             renderWithErrors(error.errors)
         }else{
             next(error)
         }
-    })
-};
+    });
+}
+
