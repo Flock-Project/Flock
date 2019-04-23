@@ -10,21 +10,22 @@ module.exports.register= (req, res, next) =>{
 
 module.exports.doRegister= (req, res, next)=>{
     function renderWithErrors(errors) {
-        return res.render('register', {
+        res.render('register', {
             user:req.body,
             errors:errors
         })
     }
 
-    User.findOne({ email:req.body.email })
+    User.findOne({ email: req.body.email })
         .then(user=>{
         if (user){
             renderWithErrors({
                 email:"Email already registered"
             })
-        }else{
+        }else {
             user= new User(req.body);
-            return user.save()            
+            return user.save()   
+                .then(user => res.redirect("/login"))         
         }
     })
     .then(user => res.redirect("/login"))
