@@ -5,13 +5,6 @@ const SALT_WORK_FACTOR = 10;
 const passport= require('passport');
 
 const userSchema= new mongoose.Schema({
-    username:{
-        type:String,
-        unique: true,
-        required: [true, "Username is required"],
-        minlength: [3, "Username needs at least 3 characters"],
-        trim:true,
-    },
     email: {
         type: String,
         required: [true, 'Email is required'],

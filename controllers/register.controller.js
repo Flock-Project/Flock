@@ -23,12 +23,13 @@ module.exports.doRegister= (req, res, next)=>{
                 email:"Email already registered"
             })
         }else {
+            console.log('no hay user')
             user= new User(req.body);
-            return user.save()   
-                .then(user => res.redirect("/login"))         
+            return user.save().then(user => { console.log(user)
+                res.redirect("/login")})
         }
     })
-    .then(user => res.redirect("/login"))
+    
     .catch(error=>{
         if(error instanceof mongoose.Error.ValidationError){
             renderWithErrors(error.errors)
@@ -38,3 +39,30 @@ module.exports.doRegister= (req, res, next)=>{
     });
 }
 
+
+  
+
+module.exports.profile = (req, res, next) => {
+    res.render('/profile')
+}
+  
+module.exports.doProfile = (req, res, next) => {
+    if (!req.body.password) {
+        delete req.body.password;
+    }
+  
+    const user = req.user;
+    Object.assign(user, req.body);
+    user.save()
+        .then(user => res.redirect('profile'))
+        .catch(error => {
+            if (error instanceof mongoose.Error.ValidationError) {
+                res.render('/profile', {
+                    user: req.body,
+                    errors: error.errors
+                })
+            } else {
+                next(error);
+            }
+        });
+}

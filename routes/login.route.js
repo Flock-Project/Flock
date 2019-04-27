@@ -7,8 +7,8 @@ const secure = require('../middlewares/secure.mid');
 
 router.get('/', controller.login)
 router.post('/', controller.doLogin)
-router.get('/profile', secure.isAuthenticated, profileController.profile);
-router.post('/profile', secure.isAuthenticated, profileController.doProfile);
+router.get('/profile', secure.isAuthenticated, controller.profile);
+router.post('/profile', secure.isAuthenticated, controller.doProfile);
 
 
 
