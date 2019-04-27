@@ -35,8 +35,10 @@
 .profile-pic {
     object-fit: scale-down;
     height: 20rem;
+    width: 30rem;
+    border-radius: 2% 2% 0 0;
     background-size: cover;
-    margin: 0;
+    margin: 0 auto;
 }
 
 .map{
@@ -44,6 +46,13 @@
     margin-left: 33%;
     padding-right: 0px;
     position: absolute;
-    background-image: url("../images/map-no-params.png");
-    background-size: cover;
+    
+}
+
+.profile-buttons {
+    margin-top: 3%;
+}
+
+.edit{
+    margin-right: 10%;
 }

@@ -1,23 +1,27 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light login"> 
-        <a class="navbar-brand" style="font-weight: bold;" href="/">FLOCK</a> 
-        <a href="/logout"> 
-            <button type="button" class="btn btn-primary ">LOG OUT</button> 
-        </a> 
+<nav class="navbar navbar-expand-lg navbar-light login" style="background-color: #F0F2F5"> 
+  <a class="navbar-brand" style="font-weight: bold" href="/"><img src="../images/birds-vector-feather-5.png" style="width: 5%;">FLOCK</imgsrc></a> 
+    <a href="/logout"> 
+      <button type="button" class="btn btn-primary" style="font-weight: bold;">LOG OUT</button> 
+    </a> 
 </nav>
 
 <div class="profile-page">
 
-<div class="card profile-card" style="width: 30rem; height: 42rem; border-width: 2px; border-color:black">
-
-  <img class="card-img-top profile-pic" src="../images/helena-lopes-463976-unsplash.jpg" class="img-fluid rounded" alt="{{ user.name }}">
-  <div class="card-body" style="text-align:center;">
-    <h5 class="card-title" style=" font-size: 2rem;">{{ user.name }}</h5>
-    <p class="card-text" style="font-size: 2rem">About Me</p>
-      <p class="card-text" style="font-size: 2rem;">{{ user.email }}</p><br>
-    <a href="/events" class="btn btn-primary" style="font-size: 1.5rem;">Create Event</a>
+  <div class="card profile-card" style="width: 30.5rem; height: 42rem; border-width: 4px; border-color:cornflowerblue; border-radius: 2%;">
+    <img class="profile-pic" src="../images/helena-lopes-463976-unsplash.jpg" alt="{{ user.name }}">
+    <div class="card-body" style="text-align:center;">
+      <h5 class="card-title" style=" font-size: 2rem;">{{ user.name }}</h5>
+      <p class="card-text" style="font-size: 1.5rem;">{{ user.email }}</p>
+      <p class="card-text" style="font-size: 1.5rem; font-style: italic; ">"I love to have fun and meet new people" {{ user.description }}</p><br>
+      <div class="profile-buttons">
+        <a href="/edit" class="btn btn-primary edit" style="font-size: 1.5rem;">Edit Profile</a>
+        <a href="/create" class="btn btn-primary" style="font-size: 1.5rem;">Create Event</a>
+      </div>
+    </div>
   </div>
-</div>
-
-<div class="map" style="width: 77rem; height: 51rem; border-color: black; border-width: 2px;"></div>
+    
+  <div class="map" style="border-width: 4px; border-color:cornflowerblue">
+    <img src="../images/map-no-params.png" style="width: 77rem; height: 51rem;">
+  </div>
 
 </div>
