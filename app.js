@@ -1,12 +1,15 @@
+const createError = require('http-errors');
 const express = require('express');
 const hbs = require('hbs');
-const indexRouter = require('./routes/index.route')
-const registerRouter = require('./routes/register.route')
-const loginRouter = require('./routes/login.route')
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const app = express();
 const passport=require("passport")
+
+const indexRouter = require('./routes/index.route')
+// const registerRouter = require('./routes/register.route')
+// const loginRouter = require('./routes/login.route')
+const authRouter = require('./routes/auth.route')
 
 require('./config/db.config');
 //require('./config/hbs.config');
@@ -30,8 +33,10 @@ app.use((req, res, next) =>{
 })
 
 app.use('/', indexRouter)
-app.use('/register', registerRouter)
-app.use('/login', loginRouter)
+// app.use('/register', registerRouter)
+// app.use('/login', loginRouter)
+app.use('/', authRouter)
+
 
 app.use(function(req, res, next) {
   next(createError(404));
@@ -50,3 +55,5 @@ res.render('error');
   
 
 app.listen(3000, () => console.log('Check'));
+
+module.exports = app;

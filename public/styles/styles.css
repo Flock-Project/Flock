@@ -32,13 +32,10 @@
 }
 
 .map{
-    margin-top: 2%;
+    margin-top: 1%;
     margin-left: 35%;
     padding-right: 0px;
     position: absolute;
     background-image: url("../images/helena-lopes-463976-unsplash.jpg");
     background-size: cover;
-
 }
-
-
