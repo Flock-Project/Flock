@@ -22,7 +22,8 @@ module.exports.doRegister= (req, res, next)=>{
             renderWithErrors({
                 email:"Email already registered"
             })
-        }else {
+        } else {
+          console.log(req.body)
             user= new User(req.body);
             return user.save()
                 .then(user => res.redirect("/login"))
@@ -64,7 +65,7 @@ module.exports.doLogin = (req, res, next) => {
 }
 
 module.exports.profile = (req, res, next) => {
-  res.render('profile')
+  res.render('profile', { user: req.user })
 }
 
 module.exports.doProfile = (req, res, next) => {
