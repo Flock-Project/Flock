@@ -5,12 +5,12 @@
     </a> 
 </nav>
 
-<form action="/register" method="POST" style="margin-top: 5%; display: flex; justify-content: center; align-items: center; 
+<form action="/list" method="POST" style="margin-top: 5%; display: flex; justify-content: center; align-items: center; 
 ">
 <div class="form-group">
             <label>Title</label>
           <div class="input-group mb-4">
-            <input type="text" name="Title" class="form-control " placeholder="Event Title" value=""/>
+            <input type="text" name="title" class="form-control " placeholder="Event Title" value=""/>
           </div> 
 
                 <label>Location</label>
@@ -27,7 +27,7 @@
 
 
    <div class="d-flex">
-      <a href="/events/{{ event._id }}" class="btn btn-sm btn-success mr-3">Create Event</a>
+      <input type="submit" >Create Event</input>
     </div>
 </div>
 </form>

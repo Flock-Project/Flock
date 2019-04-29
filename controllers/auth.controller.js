@@ -95,14 +95,14 @@ module.exports.create = (req, res, next) => {
 
 module.exports.doCreate = (req, res, next) => {
   const event = new Event(req.body)
-
+  
   event.save()
-    .then(() => res.redirect(`/${event._id}`))
+    .then(() => res.redirect(`/list`))
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
         res.render('events', {
           event,
-          ...error
+          error
         })
       } else {
         next(error)
