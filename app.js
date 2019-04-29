@@ -12,7 +12,7 @@ const indexRouter = require('./routes/index.route')
 const authRouter = require('./routes/auth.route')
 
 require('./config/db.config');
-//require('./config/hbs.config');
+require('./config/hbs.config');
 const session = require('./config/session.config')
 require('./config/passport.config')
 

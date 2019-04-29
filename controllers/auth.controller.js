@@ -1,7 +1,7 @@
 const mongoose= require('mongoose');
 const User= require('../models/user.model')
 const passport= require('passport');
-
+const Event = require('../models/events.model')
 
 module.exports.register= (req, res, next) =>{
     res.render('register')
@@ -87,6 +87,43 @@ user.save()
       next(error);
     }
   });
+}
+
+module.exports.create = (req, res, next) => {
+  res.render('events', { event: new Event() })
+}
+
+module.exports.doCreate = (req, res, next) => {
+  const event = new Event(req.body)
+
+  event.save()
+    .then(() => res.redirect(`/${event._id}`))
+    .catch((error) => {
+      if (error instanceof mongoose.Error.ValidationError) {
+        res.render('events', {
+          event,
+          ...error
+        })
+      } else {
+        next(error)
+      }
+    });
+}
+
+module.exports.list = (req, res, next) => {
+  const criteria = {};
+
+  if (req.query.title) {
+    criteria.title = new RegExp(req.query.title, 'i');
+  }
+
+  Event.find(criteria)
+    .sort({ _id: -1 })
+    .then(events => res.render('list', { 
+      events,
+      title: req.query.title 
+    }))
+    .catch(error => next(error));
 }
 
 module.exports.logout = (req, res, next) => {
