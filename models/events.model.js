@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const EVENT_CATEGORIES = ['Hangout', 'Grab some food', 'Watch a movie', 'Go to the theater', 'Grab a drink']
+
 
 const eventSchema = new mongoose.Schema({
     title:{
@@ -9,13 +11,30 @@ const eventSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Location is required']
     },
+    description:{
+        short: {
+            type: String,
+            default: '',
+            required: [true, 'Description is required']
+
+          },
+          long: {
+            type: String,
+            default: '',
+            required: [true, 'Description is required']
+          }
+    },
     time: {
-        startTime: Date,
-        endTime: Date,
-    },description:{
         type: String,
-        required: [true, 'Description is required']
+        required: [true]
+
+    },
+    categories: {
+        type: [String],
+        enum: EVENT_CATEGORIES,
+        default: []    
     }
+
 
 })
 

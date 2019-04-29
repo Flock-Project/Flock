@@ -15,12 +15,17 @@
 
 <div class='list-group'>
   {{#each events as |event| }}
-  <a href="/books/{{ book.id }}" class="list-group-item list-group-item-action">
+  <a href="/events/{{ event.id }}" class="list-group-item list-group-item-action">
   <div class="d-flex w-100 justify-content-between">
     <h5 class="mb-1" style="font-weight: bold;">{{ title }}</h5>
   </div>
     <p class="mb-1">{{ location }}</p>
-    <p class="mb-1">{{ description }}</p>
+    <p class="mb-1">{{ description.short }}</p>
+    <p class="mb-1">{{ description.long }}</p>
+    <p class="mb-1">{{ time }}</p>
+    <p class="mb-1">{{ categories }}</p>
+
+
   </a>
   {{/each}}
 </div>

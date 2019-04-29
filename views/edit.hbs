@@ -8,16 +8,17 @@
 <form action="/profile" method="POST" style="margin-top: 5%; display: flex; justify-content: center; align-items: center; 
 ">
 <div class="form-group">
+    <label>Username</label>
     <div class="input-group mb-4">
-        <label>Username</label>
         <input type="text" name="name" class="form-control {{#if errors.name}} is-invalid {{/if}}" placeholder="{{user.name}}" value="{{ user.name }}"/>
         <div class="invalid-feedback">
             {{ errors.name }}
         </div> 
     </div> 
-
+    
+    <label>About Me</label>
     <div class="input-group mb-4">
-        <label>About Me</label>
+       
         <input type="text" name="description" class="form-control {{#if errors.description}} is-invalid {{/if}}" placeholder="{{user.description}}" value="{{ user.description }}"/>
         <div class="invalid-feedback">
             {{ errors.description }}
@@ -25,7 +26,7 @@
     </div>
 
    <div class="d-flex">
-      <button type="submit">Update Profile</button>
+      <button type="submit" class="btn btn-sm btn-success text-white mr-3">Update Profile</button>
     </div>
 </div>
 </form>
