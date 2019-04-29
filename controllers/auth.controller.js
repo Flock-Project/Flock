@@ -1,3 +1,4 @@
+const createError = require('http-errors');
 const mongoose= require('mongoose');
 const User= require('../models/user.model')
 const passport= require('passport');
@@ -125,6 +126,49 @@ module.exports.list = (req, res, next) => {
     }))
     .catch(error => next(error));
 }
+
+module.exports.edit = (req, res, next) => {
+    const id = req.params.id;
+
+    User.findById(id)
+    .then(user => {
+      if (user) {
+        res.render('edit', {
+          user
+        })
+      } else {
+        next(createError(404, 'User not found'))
+      }
+    })
+    .catch(error => next(error))
+}
+
+module.exports.doEdit = (req, res, next) => {
+  const id = req.params.id;
+
+  User.findByIdAndUpdate(id, req.body, { new: true, runValidators: true })
+  .then((user) => {
+    if (user) {
+      res.redirect(`/${user._id}`)
+    } else {
+      next(createError(404, 'User not found'))
+    } 
+  })
+  .catch((error) => {
+    if (error instanceof mongoose.Error.ValidationError) {
+      const user = new User({ ...req.body, _id: id })
+      user.isNew = false
+
+      res.render('profile', {
+        user,
+        ...error
+      })
+    } else {
+      next(error);
+    }
+  })
+}
+
 
 module.exports.logout = (req, res, next) => {
     req.logout();

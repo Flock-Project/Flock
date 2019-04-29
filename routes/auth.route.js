@@ -18,6 +18,8 @@ router.post('/list',  secure.isAuthenticated, controller.doCreate);
 
 router.get('/list',  secure.isAuthenticated, controller.list)
 
+router.get('/:id/edit', secure.isAuthenticated, controller.edit);
+router.post('/:id', secure.isAuthenticated, controller.doEdit);
 
 router.get('/logout', controller.logout);
 

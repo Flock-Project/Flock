@@ -12,9 +12,9 @@
     <div class="card-body" style="text-align:center;">
       <h5 class="card-title" style=" font-size: 2rem;">{{ user.name }}</h5>
       <p class="card-text" style="font-size: 1.5rem;">{{ user.email }}</p>
-      <p class="card-text" style="font-size: 1.5rem; font-style: italic; ">"I love to have fun and meet new people" {{ user.description }}</p><br>
+      <p class="card-text" style="font-size: 1.5rem; font-style: italic; ">"{{ user.description }}"</p><br>
       <div class="profile-buttons">
-        <a href="/edit" class="btn btn-primary edit" style="font-size: 1.5rem;">Edit Profile</a>
+        <a href="/{{user._id}}/edit" class="btn btn-primary edit" style="font-size: 1.5rem;">Edit Profile</a>
         <a href="/events" class="btn btn-primary" style="font-size: 1.5rem;">Create Event</a>
       </div>
     </div>

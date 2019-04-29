@@ -1,1 +1,31 @@
-Welcome
+<nav class="navbar navbar-expand-lg navbar-light login" style="background-color: #F0F2F5"> 
+  <a class="navbar-brand" style="font-weight: bold" href="/"><img src="../images/birds-vector-feather-5.png" style="width: 5%;">FLOCK</imgsrc></a> 
+    <a href="/logout"> 
+      <button type="button" class="btn btn-primary" style="font-weight: bold;">LOG OUT</button> 
+    </a> 
+</nav>
+
+<form action="/profile" method="POST" style="margin-top: 5%; display: flex; justify-content: center; align-items: center; 
+">
+<div class="form-group">
+    <div class="input-group mb-4">
+        <label>Username</label>
+        <input type="text" name="name" class="form-control {{#if errors.name}} is-invalid {{/if}}" placeholder="{{user.name}}" value="{{ user.name }}"/>
+        <div class="invalid-feedback">
+            {{ errors.name }}
+        </div> 
+    </div> 
+
+    <div class="input-group mb-4">
+        <label>About Me</label>
+        <input type="text" name="description" class="form-control {{#if errors.description}} is-invalid {{/if}}" placeholder="{{user.description}}" value="{{ user.description }}"/>
+        <div class="invalid-feedback">
+            {{ errors.description }}
+        </div> 
+    </div>
+
+   <div class="d-flex">
+      <button type="submit">Update Profile</button>
+    </div>
+</div>
+</form>
