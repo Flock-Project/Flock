@@ -27,7 +27,14 @@ const userSchema= new mongoose.Schema({
   description: {
     type: String
   },
-});
+   social: {
+    googleId: {
+      type: String,
+      unique: true
+    },
+  },
+  avatarURL: String
+}, { timestamps: true } );
 
 userSchema.pre('save', function(next) {
   const user = this;

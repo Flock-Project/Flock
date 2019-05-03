@@ -65,6 +65,23 @@ module.exports.doLogin = (req, res, next) => {
   })(req, res, next);
 }
 
+module.exports.loginWithIDPCallback = (req, res, next) => {
+  const { idp } = req.params; 
+  passport.authenticate(`${idp}-auth`, (error, user) => {
+    if (error) {
+      next(error);
+    } else {
+      req.login(user, (error) => {
+        if (error) {
+          next(error)
+        } else {
+          res.redirect('/users');
+        }
+      })
+    }
+  })(req, res, next);
+}
+
 module.exports.profile = (req, res, next) => {
   res.render('profile', { user: req.user })
 }
@@ -72,6 +89,10 @@ module.exports.profile = (req, res, next) => {
 module.exports.doProfile = (req, res, next) => {
 if (!req.body.password) {
   delete req.body.password;
+}
+
+if (req.file) {
+  req.body.avatarURL = req.file.secure_url;
 }
 
 const user = req.user;
@@ -91,17 +112,17 @@ user.save()
 }
 
 module.exports.create = (req, res, next) => {
-  res.render('events', { event: new Event() })
+  res.render('create', { event: new Event() })
 }
 
 module.exports.doCreate = (req, res, next) => {
   const event = new Event(req.body)
   
   event.save()
-    .then(() => res.redirect(`/list`))
+    .then(() => res.redirect('/events'))
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
-        res.render('events', {
+        res.render('create', {
           event,
           error
         })
@@ -120,7 +141,7 @@ module.exports.list = (req, res, next) => {
 
   Event.find(criteria)
     .sort({ _id: -1 })
-    .then(events => res.render('list', { 
+    .then(events => res.render('events', { 
       events,
       title: req.query.title 
     }))
