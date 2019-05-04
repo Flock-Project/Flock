@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const EVENT_CATEGORIES = ['Hangout', 'Grab some food', 'Watch a movie', 'Go to the theater', 'Grab a drink']
+const EVENT_CATEGORIES = ['social', 'drinks', 'shows', 'tourism', 'food', 'dance', 'sports', 'activities']
 
 
 const eventSchema = new mongoose.Schema({
@@ -30,13 +30,19 @@ const eventSchema = new mongoose.Schema({
 
     },
     categories: {
-        type: [String],
+        type: String,
         enum: EVENT_CATEGORIES,
-        default: []    
+        default: 'social',
+        required: true
+    },
+    location: {
+        type: {type: String}, 
+        coordinates: [Number]
     }
 
+}, { timestamps: true });
 
-})
+eventSchema.index({ location: '2dsphere'});
 
 
 const Event = mongoose.model('Event', eventSchema);

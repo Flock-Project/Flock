@@ -116,7 +116,15 @@ module.exports.create = (req, res, next) => {
 }
 
 module.exports.doCreate = (req, res, next) => {
-  const event = new Event(req.body)
+  const event = new Event({
+    title: req.body.title,
+    categories: req.body.categories,
+    description: req.body.description,
+    location: {
+        type: 'Point', 
+        coordinates: [req.body.longitude,  req.body.latitude]
+    }
+});
   
   event.save()
     .then(() => res.redirect('/events'))

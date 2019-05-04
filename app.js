@@ -11,6 +11,8 @@ const passport=require("passport")
 
 const indexRouter = require('./routes/index.route')
 const authRouter = require('./routes/auth.route')
+const eventsRouter = require('./routes/events.route')
+
 
 require('./config/db.config');
 require('./config/hbs.config');
@@ -36,6 +38,8 @@ app.use((req, res, next) =>{
 
 app.use('/', indexRouter)
 app.use('/', authRouter)
+app.use('/', eventsRouter)
+
 
 
 app.use(function(req, res, next) {

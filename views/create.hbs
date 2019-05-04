@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-light login" style="background-color: #F0F2F5"> 
   <a class="navbar-brand" style="font-weight: bold" href="/"><img src="../images/birds-vector-feather-5.png" style="width: 5%;">FLOCK</imgsrc></a> 
-    <a href="/profile">User Profile</a> 
+    <a href="/profile">events Profile</a> 
     <a href="/logout"> 
       <button type="button" class="btn btn-primary" style="font-weight: bold;">LOG OUT</button> 
     </a> 
 </nav>
-
+{{!-- <div class="row">
 <form action="/events" method="POST" style="margin-top: 2%; display: flex; justify-content: center; align-items: center;">
-  <div class="form-group" style="width: 70%;">
+  <div class="form-group col" style="width: 70%;">
     <label style="font-weight: bold; font-size: 1.5rem;">Title</label>
     <div class="input-group mb-4">
       <input type="text" name="title" class="form-control " placeholder="Event Title" value=""/>
@@ -23,10 +23,29 @@
       <input type="text" name="description.long" class="form-control " placeholder="Description" value=""/>
     </div> 
 
-    <label style="font-weight: bold; font-size: 1.5rem;">Location</label>
+    <label style="font-weight: bold; font-size: 1.5rem;">Latitude</label>
     <div class="input-group mb-4">
-      <input type="text" name="location" class="form-control " placeholder="Description" value=""/>
-    </div>
+     <input type="text" class="form-control {{#if errors.latitude }}is-invalid{{/if}}" name="latitude" value="{{events.latitude}}"
+       placeholder="Enter events latitude" id="lat">
+
+     {{#if errors.latitude }}
+     <div class="invalid-feedback">
+       {{errors.latitude}}
+     </div>
+     {{/if}}
+     </div>
+    <label style="font-weight: bold; font-size: 1.5rem;">Longitude</label>
+
+   <div class="input-group mb-4">
+     <input type="text" class="form-control {{#if errors.longitude }}is-invalid{{/if}}" name="longitude"
+       value="{{events.longitude}}" placeholder="Enter events longitude" id="lng">
+
+     {{#if errors.longitude }}
+     <div class="invalid-feedback">
+       {{errors.longitude}}
+     </div>
+     {{/if}}
+   </div>
 
     <label style="font-weight: bold; font-size: 1.5rem; width: 20%;">Date & Time</label>
     <div class="input-group mb-4" style="width: 20%;">
@@ -35,8 +54,8 @@
 
     <label style="font-weight: bold; font-size: 1.5rem;">Categories</label>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="Hangout" id="exampleRadios1">
-      <label class="form-check-label" for="exampleRadios1">Hangout</label>
+      <input class="form-check-input" type="radio" name="Hangout" id="exampleRadios1" src="../images/cine.png">
+     
     </div>
     
     <div class="form-check">
@@ -54,4 +73,106 @@
       <button type="submit" class="btn btn-sm btn-success text-white mr-3" style="font-weight: bold; font-size: 1rem;">Create Event</button>
     </div>
   </div>
+  <div class="col">
+  <div class="createMap"></div>
+</div>
 </form>
+</div> --}}
+
+
+<div class="row">
+   <div class="col">
+    <form action="/events" method="POST">
+   <div class="form-group">
+     <label>event name</label>
+     <input type="text" class="form-control {{#if errors.name }}is-invalid{{/if}}" name="name" value="{{event.name}}"
+       placeholder="Enter event name">
+
+     {{#if errors.name }}
+     <div class="invalid-feedback">
+       {{errors.name}}
+     </div>
+     {{/if}}
+   </div>
+
+   <div class="form-group">
+     <label>Short Description</label>
+     <input type="text" class="form-control {{#if errors.email }}is-invalid{{/if}}" name="email" value="{{event.email}}"
+       placeholder="Enter event email">
+
+     {{#if errors.email }}
+     <div class="invalid-feedback">
+       {{errors.email}}
+     </div>
+     {{/if}}
+   </div>
+
+   <div class="form-group">
+    <label>Long Description</label>
+    <input type="text" class="form-control {{#if errors.email }}is-invalid{{/if}}" name="email" value="{{event.email}}"
+      placeholder="Enter event email">
+
+    {{#if errors.email }}
+    <div class="invalid-feedback">
+      {{errors.email}}
+    </div>
+    {{/if}}
+  </div>
+
+   <div class="form-group">
+     <label>event latitude</label>
+     <input type="text" class="form-control {{#if errors.latitude }}is-invalid{{/if}}" name="latitude" value="{{event.latitude}}"
+       placeholder="Enter event latitude" id="lat">
+
+     {{#if errors.latitude }}
+     <div class="invalid-feedback">
+       {{errors.latitude}}
+     </div>
+     {{/if}}
+   </div>
+
+   <div class="form-group">
+     <label>event longitude</label>
+     <input type="text" class="form-control {{#if errors.longitude }}is-invalid{{/if}}" name="longitude"
+       value="{{event.longitude}}" placeholder="Enter event longitude" id="lng">
+
+     {{#if errors.longitude }}
+     <div class="invalid-feedback">
+       {{errors.longitude}}
+     </div>
+     {{/if}}
+   </div>
+<label style="font-weight: bold; font-size: 1.5rem; width: 20%;">Date & Time</label>
+    <div class="input-group mb-4" style="width: 20%;">
+      <input type="datetime-local" name="time" class="form-control " placeholder="xx/xx/20xx 00:00" value=""/>
+    </div>
+
+    <label style="font-weight: bold; font-size: 1.5rem;">Categories</label>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="Hangout" id="exampleRadios1" src="../images/cine.png">
+     
+    </div>
+    
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="Grab Some Food" id="exampleRadios2">
+      <label class="form-check-label" for="exampleRadios2">Grab Some Food</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="Go the Cinema" id="exampleRadios3">
+      <label class="form-check-label" for="exampleRadios3">Go the Cinema</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="text" name="Go the Cinema" id="exampleRadios3" placeholder="Other">
+    </div>
+    <div class="d-flex" style="margin-top: 5%;">
+      <button type="submit" class="btn btn-sm btn-success text-white mr-3" style="font-weight: bold; font-size: 1rem;">Create Event</button>
+    </div>
+
+ </form>
+ </div>
+
+ <div class="col">
+   <div id="map"></div>
+ </div>
+ </div>
+</div>
