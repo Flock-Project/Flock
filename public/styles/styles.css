@@ -23,6 +23,8 @@
 .login {
     justify-content: space-between;
  
+    flex-direction: roW; 
+    display: 
 }
 
 .profile-card {
@@ -41,6 +43,13 @@
     margin: 0 auto;
 }
 
+.event-icons {
+    height: 15rem;
+    width: 15rem;
+    border-radius: 2% 2% 0 0;
+    background-size: cover;
+    margin: 0 auto; 
+}
 .map{
     margin-top: 1%;
     margin-left: 33%;
