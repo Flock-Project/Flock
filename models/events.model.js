@@ -7,10 +7,6 @@ const eventSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Title is required']
     },
-    location:{
-        type: String,
-        required: [true, 'Location is required']
-    },
     description:{
         short: {
             type: String,
@@ -36,7 +32,10 @@ const eventSchema = new mongoose.Schema({
         required: true
     },
     location: {
-        type: {type: String}, 
+        type: {
+            type: String,
+            default: 'Point'
+        }, 
         coordinates: [Number]
     }
 

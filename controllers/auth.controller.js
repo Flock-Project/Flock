@@ -111,50 +111,6 @@ user.save()
   });
 }
 
-module.exports.create = (req, res, next) => {
-  res.render('create', { event: new Event() })
-}
-
-module.exports.doCreate = (req, res, next) => {
-  const event = new Event({
-    title: req.body.title,
-    categories: req.body.categories,
-    description: req.body.description,
-    location: {
-        type: 'Point', 
-        coordinates: [req.body.longitude,  req.body.latitude]
-    }
-});
-  
-  event.save()
-    .then(() => res.redirect('/events'))
-    .catch((error) => {
-      if (error instanceof mongoose.Error.ValidationError) {
-        res.render('create', {
-          event,
-          error
-        })
-      } else {
-        next(error)
-      }
-    });
-}
-
-module.exports.list = (req, res, next) => {
-  const criteria = {};
-
-  if (req.query.title) {
-    criteria.title = new RegExp(req.query.title, 'i');
-  }
-
-  Event.find(criteria)
-    .sort({ _id: -1 })
-    .then(events => res.render('events', { 
-      events,
-      title: req.query.title 
-    }))
-    .catch(error => next(error));
-}
 
 module.exports.edit = (req, res, next) => {
     const id = req.params.id;
