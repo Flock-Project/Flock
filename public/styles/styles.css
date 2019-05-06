@@ -1,3 +1,4 @@
+
 .background-image{
     background-image: url("../images/friends-having-fun.jpg");
     background-size: cover;
@@ -22,10 +23,12 @@
 
 .login {
     justify-content: space-between; 
+
 }
 
+
 .profile-card {
-    margin-top: 6%;
+    margin-top: 5%;
     margin-left: 6%;
     padding-right: 0px;
     position: absolute
@@ -43,9 +46,13 @@
 .event-icons {
     height: 5rem;
     width: 5rem;
-    border-radius: 2% 2% 0 0;
-    background-size: cover;
-    margin: 0 auto; 
+    margin-left: 15%
+}
+.card-width{
+    width: 70%;
+    border-width: 4px; 
+    border-color:cornflowerblue; 
+    border-radius: 2%
 }
 .map{
     margin-top: 1%;
@@ -68,6 +75,20 @@
     height: 500px;
 }
 
-.createMap {
-    width: 40%;
+
+.event-title {
+    font-weight: bold; 
+    font-size: 1.2rem;
+}
+
+.events-list {
+    width: 70%;
+    margin-left: 15%;
+    background-color: cornflowerblue;
+}
+.events-label{
+    font-weight: bold; 
+    font-size: 2.5rem; 
+    margin-left: 45%; 
+    margin-top: 10%;
 }

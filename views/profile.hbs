@@ -1,14 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-light login" style="background-color: #F0F2F5"> 
   <a class="navbar-brand" style="font-weight: bold" href="/"><img src="../images/birds-vector-feather-5.png" style="width: 5%;">FLOCK</imgsrc></a> 
-<div class="dropdown dropleft">
-  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    {{ user.name }}
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="/profile">Profile Page</a>
-    <a class="dropdown-item" href="/logout">Logout</a>
-  </div>
-</div>
+   <div class="nav-item dropdown" style="margin-right: 5%;S">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.3rem;">User</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/profile">Profile</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/events">Events</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/logout">Logout</a>
+        </div>
+      </div>
 </nav>
 
 <div class="profile-page">
@@ -30,7 +31,7 @@
     <div class="card-body" style="text-align:center;">
       <h5 class="card-title" contenteditable="true" style=" font-size: 2rem;">{{ user.name }}</h5>
       <p class="card-text" style="font-size: 1.5rem;">{{ user.email }}</p>
-      <p class="card-text" contenteditable="true" style="font-size: 1.5rem; font-style: italic;">"{{ user.description }}"</p><br>
+      <p class="card-text" contenteditable="true" style="font-size: 1.5rem; font-style: italic;">"About Me .....{{ user.description }}"</p><br>
       <div class="profile-buttons">
         <a href="/events/create" class="btn btn-primary" style="font-size: 1.5rem;">Create Event</a>
       </div>

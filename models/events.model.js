@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const EVENT_CATEGORIES = ['social', 'drinks', 'shows', 'tourism', 'food', 'dance', 'sports', 'activities']
+const EVENT_CATEGORIES = ['social', 'drinks', 'shows', 'culture', 'food', 'dance', 'sports', 'activities']
 
 
 const eventSchema = new mongoose.Schema({

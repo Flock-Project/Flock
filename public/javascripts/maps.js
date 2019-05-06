@@ -8,8 +8,8 @@ class MyMap {
    
     init() {
       this.googleMap = new google.maps.Map(this.container, {
-        zoom: 10,
-        center: { lat: 41.3977381, lng: 2.190471916 }
+        zoom: 14,
+        center: { lat: 40.416775, lng: -3.703790 }
       });
     }
    

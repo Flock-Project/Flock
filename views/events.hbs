@@ -1,25 +1,28 @@
-
 <script>
     var markers = {{{ JSONPlaces }}};
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-light login" style="background-color: #F0F2F5"> 
   <a class="navbar-brand" style="font-weight: bold" href="/"><img src="../images/birds-vector-feather-5.png" style="width: 5%;">FLOCK</imgsrc></a> 
-     <a href="/profile">User Profile</a> 
-    <a href="/logout"> 
-      <button type="button" class="btn btn-primary" style="font-weight: bold;">LOG OUT</button> 
-    </a> 
+   <div class="nav-item dropdown" style="margin-right: 5%;">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.3rem;">User</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/profile">Profile</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/events">Events</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/logout">Logout</a>
+        </div>
+      </div>
 </nav>
 
-<div id="map"></div>
+<div id="map" style="width: 100%; height: 500px;"></div>
 
-<form action="/events" method="GET" style="margin-top: 1%;">
-  <div class="form-row">
+<form action="/events" method="GET" style="margin-top: 5px;">
+  
+  <div class="form-row" style="width: 70%; margin-left: 15%;">
     <div class="form-group col-10">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <div class="input-group-text"></div>
-        </div>
+      <div class="input-group" >
         <input type="text" class="form-control" name="title" placeholder="Type Event title..." value="{{ title }}">
       </div>
     </div>
@@ -27,9 +30,10 @@
       <button type="submit" class="btn btn-block btn-primary">Search</button>
     </div>
   </div>
-<div class="row " style="margin-left: 20%;">
+
+<div class="row" style="margin-left: 20%;">
   <div class="col-sm-2">
-    <div class="card ">
+    <div class="card card-width">
       <div class="card-body">
         <a href="#"><img class="event-icons" src="../images/social.png">
         </a>
@@ -37,7 +41,7 @@
     </div>  
   </div>
    <div class="col-sm-2">
-    <div class="card">
+    <div class="card card-width">
       <div class="card-body">
         <a href="#"><img class="event-icons" src="../images/drinks.png">
         </a>
@@ -45,7 +49,7 @@
     </div>  
   </div>
   <div class="col-sm-2">
-    <div class="card">
+    <div class="card card-width">
       <div class="card-body">
         <a href="#"><img class="event-icons" src="../images/cine.png">
         </a>
@@ -53,7 +57,7 @@
     </div>  
   </div>
   <div class="col-sm-2">
-    <div class="card">
+    <div class="card card-width">
       <div class="card-body">
         <a href="#"><img class="event-icons" src="../images/comer.png">
         </a>
@@ -64,7 +68,7 @@
 <br>
 <div class="row" style="margin-left: 20%;">
   <div class="col-sm-2">
-    <div class="card">
+    <div class="card card-width">
       <div class="card-body">
         <a href="#"><img class="event-icons" src="../images/dance.png">
         </a>
@@ -72,7 +76,7 @@
     </div>  
   </div>
   <div class="col-sm-2">
-    <div class="card">
+    <div class="card card-width">
       <div class="card-body">
         <a href="#"><img class="event-icons" src="../images/museo.png">
         </a>
@@ -80,7 +84,7 @@
     </div>  
   </div>
   <div class="col-sm-2">
-    <div class="card">
+    <div class="card card-width">
       <div class="card-body">
         <a href="#"><img class="event-icons" src="../images/sports.png">
         </a>
@@ -88,7 +92,7 @@
     </div>  
   </div>
   <div class="col-sm-2">
-    <div class="card">
+    <div class="card card-width">
       <div class="card-body">
         <a href="#"><img class="event-icons" src="../images/actividades.png">
         </a>
@@ -96,25 +100,20 @@
     </div>  
   </div>
 </div>
-
-<br><br>
-<br><br>
-<br><br>
-<br><br>
+</form>
 
 
-
-<div class='list-group'>
+<label class="events-label">Events:</label>
+<div class="list-group events-list">
   {{#each events as |event| }}
-  <a href="/events/{{ event.id }}" class="list-group-item list-group-item-action">
+  <a href="/events/{{ event.id }}" class="list-group-item list-group-item-action" style="">
   <div class="d-flex w-100 justify-content-between">
-    <h5 class="mb-1" style="font-weight: bold;">{{ title }}</h5>
+    <h2 class="mb-1" style="font-weight: bold; color: cornflowerblue; text-transform: uppercase;">{{ title }}</h2>
   </div>
-    <p class="mb-1">{{ location }}</p>
-    <p class="mb-1">{{ description.short }}</p>
-    <p class="mb-1">{{ description.long }}</p>
-    <p class="mb-1">{{ time }}</p>
-    <p class="mb-1">{{ categories }}</p>
+    <p class="mb-1" style="font-weight: bold; color: black">{{ description.short }}</p>
+    <p class="mb-1" style="font-weight: bold; color: black">{{ description.long }}</p>
+    <p class="mb-1" style="font-weight: bold; color:red">{{ time }}</p>
+    <p class="mb-1" style="text-transform: uppercase; color:darkkhaki">{{ categories }}</p>
   </a>
   {{/each}}
 </div>
