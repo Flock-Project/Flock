@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Event = require('../models/events.model')
+const createError = require('http-errors')
 
 
 module.exports.create = (req, res, next) => {
@@ -39,11 +40,27 @@ module.exports.list = (req, res, next) => {
     }
 
     Event.find(criteria)
-        .sort({ _id: -1 })
+        .sort({ creationAt: -1 })
+        .populate('joiners')
         .then(events => res.render('events', {
             events,
             JSONPlaces: JSON.stringify(events),
             title: req.query.title
         }))
         .catch(error => next(error));
+}
+
+module.exports.join = (req, res, next) => {
+    const id = req.params.id
+    req.user
+
+    Event.findByIdAndUpdate(id, { $addToSet: {joiners: req.user.id} }, { new: true })
+        .then((event) => {
+            if (event) {
+                res.redirect('/events')
+            } else {
+                next(createError(404, 'Event not found'))
+            }
+        })
+        .catch(next)
 }

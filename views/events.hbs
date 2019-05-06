@@ -115,5 +115,17 @@
     <p class="mb-1" style="font-weight: bold; color:red">{{ time }}</p>
     <p class="mb-1" style="text-transform: uppercase; color:darkkhaki">{{ categories }}</p>
   </a>
+  <div>
+    <form method="POST" action="/events/{{ event.id }}/join">
+      <button class="btn btn-sm btn-secondary" onclick="onClickJoinEvent(event)" data-event-id="{{event._id}}">
+        Join
+      </button>
+    </form>
+    <ul>
+      {{#each event.joiners as |user| }}
+        <li>{{user.name}}</li>
+      {{/each}}
+    </ul>
+  </div>
   {{/each}}
 </div>

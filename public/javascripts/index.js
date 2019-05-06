@@ -1,3 +1,12 @@
+function onClickJoinEvent(e) {
+  e.preventDefault();
+ 
+  const eventId = e.target.dataset.eventId;
+ 
+  e.target.innerText = "  Loading"
+ 
+ }
+
 function initMap() {
     const mapContainer = document.getElementById('map')
    

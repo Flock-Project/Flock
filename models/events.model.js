@@ -37,8 +37,13 @@ const eventSchema = new mongoose.Schema({
             default: 'Point'
         }, 
         coordinates: [Number]
-    }
-
+    },
+    joiners: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    ]
 }, { timestamps: true });
 
 eventSchema.index({ location: '2dsphere'});
