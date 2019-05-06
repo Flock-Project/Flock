@@ -38,6 +38,10 @@ const eventSchema = new mongoose.Schema({
         }, 
         coordinates: [Number]
     },
+    creater: {
+        type: String,
+        required: true
+    },
     joiners: [
         {
             type: mongoose.Schema.Types.ObjectId,

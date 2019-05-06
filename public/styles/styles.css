@@ -87,11 +87,19 @@
 .events-list {
     width: 70%;
     margin-left: 15%;
-    background-color: cornflowerblue;
 }
 .events-label{
     font-weight: bold; 
     font-size: 2.5rem; 
     margin-left: 45%; 
     margin-top: 10%;
+}
+
+.event-page-pic {
+    object-fit: scale-down;
+    height: 30rem;
+    width: 40rem;
+    border-radius: 2% 2% 0 0;
+    background-size: cover;
+    margin: 0 auto;
 }

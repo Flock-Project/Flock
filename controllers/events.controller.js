@@ -64,3 +64,12 @@ module.exports.join = (req, res, next) => {
         })
         .catch(next)
 }
+
+module.exports.eventDetail = (req, res, next) => {
+    const id = req.params.eventId;
+    Event.findById(id)
+        .then(event =>{
+            res.render('event-page', { event } )
+        })
+        .catch(next)
+}

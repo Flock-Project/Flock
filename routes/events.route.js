@@ -10,4 +10,6 @@ router.get('/events', secure.isAuthenticated, controller.list)
 
 router.post('/events/:id/join', controller.join);
 
+router.get('/events/:eventId', controller.eventDetail)
+
 module.exports = router
