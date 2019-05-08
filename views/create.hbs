@@ -2,8 +2,7 @@
   <a class="navbar-brand" style="font-weight: bold" href="/"><img src="../images/birds-vector-feather-5.png"
       style="width: 5%;">FLOCK</imgsrc></a>
   <div class="nav-item dropdown" style="margin-right: 5%;">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-      aria-haspopup="true" aria-expanded="false" style="font-size: 1.3rem;">User</a>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.3rem;">{{session.name}}</a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
       <a class="dropdown-item" href="/profile">Profile</a>
       <div class="dropdown-divider"></div>
@@ -22,13 +21,15 @@
       <label class="event-title">Event Name</label>
       <input type="text" class="form-control" name="title" value="{{event.title}}" placeholder="Enter event name">
     </div>
+       <div class="invalid-feedback"></div>
 
     <div class="form-group">
       <label class="event-title">Created By</label>
-      <input type="text" class="form-control " name="creater" value="{{event.creater}}"
-        placeholder="Enter creater's name">
-      {{!-- {{#each user.name as |users|}} --}}
+      <input type="text" class="form-control " name="creater" value="{{session.name}}"
+        placeholder="Enter creater's name" readonly>
     </div>
+           <div class="invalid-feedback"></div>
+
 
 
     <div class="form-group">
@@ -36,12 +37,16 @@
       <input type="text" class="form-control" name="description" value="{{event.description}}"
         placeholder="Enter description">
     </div>
+           <div class="invalid-feedback"></div>
+
 
     <div class="form-group" style="width: 27%;">
       <label class="event-title">Location (Latitude)</label>
       <input type="text" class="form-control" name="location[coordinates][1]" value="{{event.latitude}}"
         placeholder="Enter event latitude" id="lat">
     </div>
+           <div class="invalid-feedback"></div>
+
 
     <div class="form-group" style="width: 27%;">
       <label class="event-title">Location (Longitude)</label>
@@ -57,35 +62,35 @@
     <label class="event-title">Categories</label>
     <div class="row col-sm-7" style="justify-content: space-between;">
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="categories[enum][social]" id="social" value="social">
+      <input class="form-check-input" type="checkbox" name="categories[]" id="social" value="social">
       <label class="form-check-label" for="social"><img class="event-icons" src="../images/social.png"></label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="categories[enum][drinks]" id="drinks" value="drinks">
+      <input class="form-check-input" type="checkbox" name="categories[]" id="drinks" value="drinks">
       <label class="form-check-label" for="drinks"><img class="event-icons" src="../images/drinks.png"></label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="shows" id="shows">
+      <input class="form-check-input" type="checkbox" name="categories[]" id="shows">
       <label class="form-check-label" for="shows"><img class="event-icons" src="../images/cine.png"></label>
     </div>
 
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="food" id="food">
+      <input class="form-check-input" type="checkbox" name="categories[]" id="food">
       <label class="form-check-label" for="food"><img class="event-icons" src="../images/comer.png"></label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="dance" id="dance">
+      <input class="form-check-input" type="checkbox" name="categories[]" id="dance">
       <label class="form-check-label" for="dance"><img class="event-icons" src="../images/dance.png"></label>
     </div>
         <div class="form-check">
-      <input class="form-check-input" type="radio" name="culture" id="culture">
+      <input class="form-check-input" type="checkbox" name="categories[]" id="culture">
       <label class="form-check-label" for="culture"><img class="event-icons" src="../images/museo.png"></label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="sports" id="sports">
+      <input class="form-check-input" type="checkbox" name="categories[]" id="sports">
       <label class="form-check-label" for="sports"><img class="event-icons" src="../images/sports.png"></label>
     </div><div class="form-check">
-      <input class="form-check-input" type="radio" name="activities" id="activities">
+      <input class="form-check-input" type="checkbox" name="activities" id="activities">
       <label class="form-check-label" for="activities"><img class="event-icons" src="../images/actividades.png"></label>
     </div>
   </div>    

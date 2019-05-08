@@ -58,7 +58,7 @@ module.exports.join = (req, res, next) => {
     Event.findByIdAndUpdate(id, { $addToSet: {joiners: req.user.id} }, { new: true })
         .then((event) => {
             if (event) {
-                res.redirect('/events')
+                res.redirect(`/events/${id}`)
             } else {
                 next(createError(404, 'Event not found'))
             }

@@ -3,11 +3,11 @@ const EVENT_CATEGORIES = ['social', 'drinks', 'shows', 'culture', 'food', 'dance
 
 
 const eventSchema = new mongoose.Schema({
-    title:{
+    title: {
         type: String,
         required: [true, 'Title is required']
     },
-    description:{
+    description: {
         type: String,
         default: '',
         required: [true, 'Description is required']
@@ -16,12 +16,12 @@ const eventSchema = new mongoose.Schema({
         type: String,
         required: [true]
     },
-    categories: {
+    categories: [{
         type: String,
         enum: EVENT_CATEGORIES,
-        default: 'social',
+        default: ['social'],
         required: true
-    },
+    }],
     location: {
         type: {
             type: String,
