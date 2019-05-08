@@ -8,9 +8,15 @@ router.post('/events',  secure.isAuthenticated, controller.doCreate);
 
 router.get('/events', secure.isAuthenticated, controller.list)
 
+router.get('/events/coordinates', controller.coordinates);
+
 router.post('/events/:id/join', controller.join);
 
-router.get('/events/:eventId', controller.eventDetail)
+router.get('/events/:eventId', controller.eventDetail);
+
+
+
+
 
 
 module.exports = router

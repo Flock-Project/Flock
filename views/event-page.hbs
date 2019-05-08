@@ -20,13 +20,11 @@
     </div>
     <div class="col" style="margin-left: 18%; margin-top: 3%;">
         <form method="POST" action="/events/{{ event.id }}/join">
-        {{#each event.joiners as |user| }}
-        {{#if user.name}}
+        {{#if join}}
         <button class="btn btn-sm btn-success" style="padding: 5%; border-radius: 15px; font-size: 1.5rem" data-event-id="{{event._id}}">Already Joined</button>
         {{else }}
         <button class="btn btn-sm btn-danger" style="padding: 5%; border-radius: 15px; font-size: 1.5rem" onclick="onClickJoinEvent(event)" data-event-id="{{event._id}}">Join Event</button>
         {{/if}}
-        {{/each}}
 
         </form>
     </div>

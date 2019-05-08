@@ -1,3 +1,4 @@
+
 function onClickJoinEvent(e) {
   e.preventDefault();
  
@@ -18,23 +19,25 @@ function initMap() {
    
     if (document.getElementById('create')) {
       setFormMapListeners(myMap)
-    } else if (document.getElementById('events')) {
+    } 
+  
       addUsersToMap(myMap)
-    }
+    
    }
    
-   function addUsersToMap(myMap) {
-    axios.get('/events')
-      .then(response => {
-        response.data.forEach(coordinate => {
-          myMap.addMarker(
-            coordinate.coordinates[1],
-            coordinate.coordinates[0]
-          )
-        })
+function addUsersToMap(myMap) {
+  axios.get('/events/coordinates')
+    .then(response => {
+      response.data.forEach(coordinate => {
+        console.log('IN')
+        myMap.addMarker(
+          coordinate.coordinates[1],
+          coordinate.coordinates[0]
+        )
       })
-      .catch(console.log)
-   }
+    })
+    .catch(console.log)
+  }
    
    function setFormMapListeners(myMap) {
     myMap.onClick((event) => {
@@ -47,3 +50,7 @@ function initMap() {
       document.getElementById('lng').value = lng.toFixed(3)
     })
    }
+
+window.onload = ()=> {
+  initMap()
+}

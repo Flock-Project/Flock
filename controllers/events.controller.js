@@ -68,9 +68,18 @@ module.exports.join = (req, res, next) => {
 
 module.exports.eventDetail = (req, res, next) => {
     const id = req.params.eventId;
+
     Event.findById(id)
         .then(event =>{
-            res.render('event-page', { event } )
+            const join = event.joiners.map(el => el.toString()).includes(req.user.id.toString())
+
+            res.render('event-page', { event, join } )
         })
+        .catch(next)
+}
+
+module.exports.coordinates = (req, res, next) => {
+    Event.find()
+        .then((events) => res.json(events.map(e => e.location)))
         .catch(next)
 }
