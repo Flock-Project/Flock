@@ -1,0 +1,12 @@
+  <div>
+    <form method="POST" action="/events/{{ event.id }}/join">
+      <button class="btn btn-sm btn-secondary" onclick="onClickJoinEvent(event)">
+        Join
+      </button>
+    </form>
+    <ul>
+      {{#each event.joiners as |user| }}
+        <li>{{user.name}}</li>
+      {{/each}}
+    </ul>
+  </div>

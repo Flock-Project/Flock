@@ -8,22 +8,13 @@ const eventSchema = new mongoose.Schema({
         required: [true, 'Title is required']
     },
     description:{
-        short: {
-            type: String,
-            default: '',
-            required: [true, 'Description is required']
-
-          },
-          long: {
-            type: String,
-            default: '',
-            required: [true, 'Description is required']
-          }
+        type: String,
+        default: '',
+        required: [true, 'Description is required']
     },
     time: {
         type: String,
         required: [true]
-
     },
     categories: {
         type: String,

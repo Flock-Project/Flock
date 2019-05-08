@@ -5,28 +5,38 @@
     </a> 
 </nav>
 
-<form action="/profile" method="POST" style="margin-top: 5%; display: flex; justify-content: center; align-items: center; 
-">
-<div class="form-group">
-    <label>Username</label>
-    <div class="input-group mb-4">
-        <input type="text" name="name" class="form-control {{#if errors.name}} is-invalid {{/if}}" placeholder="{{user.name}}" value="{{ user.name }}"/>
-        <div class="invalid-feedback">
-            {{ errors.name }}
-        </div> 
-    </div> 
-    
-    <label>About Me</label>
-    <div class="input-group mb-4">
-       
-        <input type="text" name="description" class="form-control {{#if errors.description}} is-invalid {{/if}}" placeholder="{{user.description}}" value="{{ user.description }}"/>
-        <div class="invalid-feedback">
-            {{ errors.description }}
-        </div> 
-    </div>
 
-   <div class="d-flex">
-      <button type="submit" class="btn btn-sm btn-success text-white mr-3">Update Profile</button>
+{{!-- 
+<form action="/profile" method="POST" style="margin-top: 5%; display: flex; justify-content: center; align-items: center; 
+"> --}}
+<div class="profile-page">
+    <div class="card profile-card" style="width: 30.5rem; height: 42rem; border-width: 4px; border-color:cornflowerblue; border-radius: 2%;">
+    {{#if session.avatarURL}}
+        <img class="profile-pic" src="{{ session.avatarURL }}" class="img-fluid rounded">
+    {{else }}
+        <img class="profile-pic" src="../images/helena-lopes-463976-unsplash.jpg">
+    {{/if}}
+    <form action="/profile" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" name="avatar" id="avatar">
+                <label class="custom-file-label" for="avatar">Change Profile Pic</label>
+            </div>
+        </div>
+        <div class="card-body" style="text-align:center;">
+            <input type="text" name="name" class="form-control {{#if errors.name}} is-invalid {{/if}}" placeholder="{{user.name}}" value="{{ user.name }}"/>
+                <div class="invalid-feedback">
+                    {{ errors.name }}
+                </div> 
+            <p class="card-text" style="font-size: 1.5rem;">{{ user.email }}</p>
+            <input type="text" name="description" class="form-control {{#if errors.description}} is-invalid {{/if}}" placeholder="This is where you can write a description about yourself...." value="{{ user.description }}"/>
+                <div class="invalid-feedback">
+                    {{ errors.description }}
+                </div> 
+            <div class="profile-buttons" style="margin-top: 10%;">
+                <button type="submit" class="btn btn-sm btn-success text-white mr-3" style="font-size: 1.5rem;">Update Profile</button>
+            </div>
+        </div>
     </div>
 </div>
 </form>

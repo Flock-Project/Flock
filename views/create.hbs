@@ -24,16 +24,17 @@
     </div>
 
     <div class="form-group">
-      <label class="event-title">Long Description</label>
-      <input type="text" class="form-control " name="description[long]" value="{{description.long}}"
-        placeholder="Enter long description">
+      <label class="event-title">Created By</label>
+      <input type="text" class="form-control " name="creater" value="{{event.creater}}"
+        placeholder="Enter creater's name">
+      {{!-- {{#each user.name as |users|}} --}}
     </div>
 
 
     <div class="form-group">
-      <label class="event-title">Short Description</label>
-      <input type="text" class="form-control" name="description[short]" value="{{description.short}}"
-        placeholder="Enter short description">
+      <label class="event-title">Description</label>
+      <input type="text" class="form-control" name="description" value="{{event.description}}"
+        placeholder="Enter description">
     </div>
 
     <div class="form-group" style="width: 27%;">
@@ -56,11 +57,11 @@
     <label class="event-title">Categories</label>
     <div class="row col-sm-7" style="justify-content: space-between;">
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="social" id="social">
+      <input class="form-check-input" type="radio" name="categories[enum][social]" id="social" value="social">
       <label class="form-check-label" for="social"><img class="event-icons" src="../images/social.png"></label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="drinks" id="drinks">
+      <input class="form-check-input" type="radio" name="categories[enum][drinks]" id="drinks" value="drinks">
       <label class="form-check-label" for="drinks"><img class="event-icons" src="../images/drinks.png"></label>
     </div>
     <div class="form-check">
@@ -89,7 +90,7 @@
     </div>
   </div>    
     <div class="d-flex" style="margin-top: 2%;">
-       <a href="/events" class="btn btn-primary" style="font-weight: bold; font-size: 1rem;">Create Event</a>
+       <button type="submit" class="btn btn-primary" style="font-weight: bold; font-size: 1rem;">Create Event</button>
     </div>
 
     </form>

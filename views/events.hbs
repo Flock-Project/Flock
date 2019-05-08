@@ -108,12 +108,12 @@
   {{#each events as |event| }}
   <a href="/events/{{ event.id }}" class="list-group-item list-group-item-action" style="">
   <div class="d-flex w-100 justify-content-between">
-    <h2 class="mb-1" style="font-weight: bold; color: cornflowerblue; text-transform: uppercase;">{{ title }}</h2>
+    <h2 class="mb-1" style="font-weight: bold; color: cornflowerblue; text-transform: uppercase;">{{ event.title }}</h2>
   </div>
-    <p class="mb-1" style="font-weight: bold; color: black">{{ description.short }}</p>
-    <p class="mb-1" style="font-weight: bold; color: black">{{ description.long }}</p>
-    <p class="mb-1" style="font-weight: bold; color:red">{{ time }}</p>
-    <p class="mb-1" style="text-transform: uppercase; color:darkkhaki">{{ categories }}</p>
+    <p class="mb-1" style="font-weight: bold; color: black">{{ event.creater }}</p>
+    <p class="mb-1" style="font-weight: bold; color: black">{{ event.description }}</p>
+    <p class="mb-1" style="font-weight: bold; color:red">{{ event.time }}</p>
+    <p class="mb-1" style="text-transform: uppercase; color: darkkhaki">{{ event.categories }}</p>
   </a>
   <div>
     <form method="POST" action="/events/{{ event.id }}/join">

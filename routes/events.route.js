@@ -12,4 +12,5 @@ router.post('/events/:id/join', controller.join);
 
 router.get('/events/:eventId', controller.eventDetail)
 
+
 module.exports = router

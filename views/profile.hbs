@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light login" style="background-color: #F0F2F5"> 
   <a class="navbar-brand" style="font-weight: bold" href="/"><img src="../images/birds-vector-feather-5.png" style="width: 5%;">FLOCK</imgsrc></a> 
    <div class="nav-item dropdown" style="margin-right: 5%;S">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.3rem;">User</a>
+        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.3rem;">User</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="/profile">Profile</a>
           <div class="dropdown-divider"></div>
@@ -13,29 +13,26 @@
 </nav>
 
 <div class="profile-page">
-
-  <div class="card profile-card" style="width: 30.5rem; height: 42rem; border-width: 4px; border-color:cornflowerblue; border-radius: 2%;">
+  <div class="card profile-card" style="width: 30.5rem; height: 42rem; border-width: 4px; border-color: cornflowerblue; border-radius: 2%;">
     {{#if session.avatarURL}}
       <img class="profile-pic" src="{{ session.avatarURL }}" class="img-fluid rounded">
     {{else }}
       <img class="profile-pic" src="../images/helena-lopes-463976-unsplash.jpg">
     {{/if}}
-        <form action="/profile" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" name="avatar" id="avatar">
-            <label class="custom-file-label" for="avatar">Change Profile Pic</label>
-          </div>
-        </div>
-      </form>
-    <div class="card-body" style="text-align:center;">
-      <h5 class="card-title" contenteditable="true" style=" font-size: 2rem;">{{ user.name }}</h5>
-      <p class="card-text" style="font-size: 1.5rem;">{{ user.email }}</p>
-      <p class="card-text" contenteditable="true" style="font-size: 1.5rem; font-style: italic;">"About Me .....{{ user.description }}"</p><br>
-      <div class="profile-buttons">
-        <a href="/events/create" class="btn btn-primary" style="font-size: 1.5rem;">Create Event</a>
+      <div class="card-body" style="text-align:center; border-top: 4px solid cornflowerblue;">
+        <h5 class="card-title" style=" font-size: 2rem; margin-top: 7%; ">{{ user.name }}</h5>
+        <p class="card-text" style="font-size: 1.5rem; margin-top: 7%; color: red;">{{ user.email }}</p>
+        {{#if user.description}}
+        <p class="card-text"  style="font-size: 1.5rem; font-style: italic; margin-top: 7%;">"{{ user.description }}"</p>
+        {{else}}
+        <h3 class="card-text" style="font-size: 1.5rem; font-style: italic; margin-top: 7%;">"This is where you can write a description about yourself...."</p>
+        {{/if}}
       </div>
-    </div>
   </div>
+</div>
 
+<div class="profile-buttons" style="margin-top: 20%;">
+  <h1></h1>
+  <a href="/{{user._id}}/edit" class="btn btn-primary" style="font-size: 1.5rem; margin-left: 15%;">Edit Profile</a>
+  <a href="/events/create" class="btn btn-primary" style="font-size: 1.5rem; float: right; margin-right: 15%;">Create Event</a>
 </div>

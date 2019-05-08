@@ -3,11 +3,11 @@
    <div class="nav-item dropdown" style="margin-right: 5%;">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.3rem;">User</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/profile">Profile</a>
-              <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/events">Events</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/logout">Logout</a>
+        <a class="dropdown-item" href="/profile">Profile</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/events">Events</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/logout">Logout</a>
         </div>
       </div>
 </nav>
@@ -15,8 +15,8 @@
 
 <div class="row" style="background-color:cornflowerblue; height: 220px;">
     <div class="col" style="margin-top: 3%; margin-left: 12%">
-        <h1 style="color: whitesmoke">{{event.title}}</h1>
-        <h3 style="color: whitesmoke; margin-left: 5%">CREATED BY: USER</h3>
+        <h1 style="color: whitesmoke">{{ event.title }}</h1>
+        <h3 style="color: whitesmoke; margin-left: 5%">CREATED BY: {{ event.user }}</h3>
     </div>
     <div class="col" style="margin-left: 18%; margin-top: 3%;">
         <form method="POST" action="/events/{{ event.id }}/event-page">
@@ -34,11 +34,11 @@
 </div>
 <div style="margin-top: 5%; margin-left: 3%">
     <h2 style="color: cornflowerblue">Date and Time:</h2><br>
-    <h4>06/06/2020, 16:45 {{event.time}}</h4>
+    <h4> {{ event.time }}</h4>
 </div>
 <div style="margin-top: 3%; margin-left: 3%">
     <h2 style="color: cornflowerblue">Description:</h2><br>
-    <h5>This is where you must type your description. You can type whatever you want. I do not care. It is only a test and these words are just here to make the page look like it has a real description. {{event.description}}</h5>
+    <h5> Here is where your event description goes. Whatever you type will appear   {{ event.description }}</h5>
 </div>
 <br><br><br><br><br><br><br>
 <div>

@@ -18,6 +18,9 @@ router.post('/profile', secure.isAuthenticated, storage.single('avatar'), contro
 router.get('/authenticate/google', passport.authenticate('google-auth', { scope: ['openid', 'profile', 'email'] }))
 router.get('/authenticate/:idp/callback', controller.loginWithIDPCallback)
 
+router.get('/:id/edit', secure.isAuthenticated, controller.edit);
+router.get('/profile', secure.isAuthenticated, controller.doEdit);
+
 router.get('/logout', controller.logout);
 
 module.exports = router;

@@ -11,12 +11,13 @@ module.exports.doCreate = (req, res, next) => {
     console.log(req.body)
     const event = new Event({
         title: req.body.title,
+        creater: req.body.creater,
         description: req.body.description,
         categories: req.body.categories,
         location: req.body.location,
         time: req.body.time
     });
-
+    
     event.save()
         .then(() => res.redirect('/events'))
         .catch((error) => {
