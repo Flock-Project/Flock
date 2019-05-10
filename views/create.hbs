@@ -1,63 +1,74 @@
-<nav class="navbar navbar-expand-lg navbar-light login" style="background-color: #F0F2F5">
-  <a class="navbar-brand" style="font-weight: bold" href="/"><img src="../images/birds-vector-feather-5.png"
-      style="width: 5%;">FLOCK</imgsrc></a>
-  <div class="nav-item dropdown" style="margin-right: 5%;">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.3rem;">{{session.name}}</a>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      <a class="dropdown-item" href="/profile">Profile</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="/events">Events</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="/logout">Logout</a>
-    </div>
-  </div>
-</nav>
+  <nav class="navbar navbar-expand-lg navbar-light login btn-primary" style=""> 
+    <a class="navbar-brand" style="font-weight: bold; color: white;" href="/"><img src="../images/birds-vector-feather-5.png" style="width: 5%; filter: invert(1); font-color: white">FLOCK</imgsrc></a> 
+    <div class="nav-item dropdown" style="margin-right: 5%;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.3rem; color: white;">{{session.name}}</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/profile">Profile</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/events">Events</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/logout">Logout</a>
+          </div>
+        </div>
+  </nav>
 
 
-<div class="row" style="margin: 2% 2% 0 2%;">
+<div class="row" id="create" style="margin: 2% 2% 0 2%;">
   <div class="col" style="width:70%">
     <form action="/events" method="POST">
     <div class="form-group">
       <label class="event-title">Event Name</label>
-      <input type="text" class="form-control" name="title" value="{{event.title}}" placeholder="Enter event name">
+      <input type="text" class="form-control {{#if errors.title}} is-invalid {{/if}}" name="title" value="{{event.title}}" placeholder="Enter event name">
     </div>
-       <div class="invalid-feedback"></div>
+      <div class="invalid-feedback">
+        {{ errors.email }}
+      </div>
 
     <div class="form-group">
-      <label class="event-title">Created By</label>
-      <input type="text" class="form-control " name="creater" value="{{session.name}}"
+      <label class="event-title">Organizer</label>
+      <input type="text" class="form-control" name="creater" value="{{session.name}}"
         placeholder="Enter creater's name" readonly>
     </div>
-           <div class="invalid-feedback"></div>
-
-
+      <div class="invalid-feedback"></div>
 
     <div class="form-group">
       <label class="event-title">Description</label>
-      <input type="text" class="form-control" name="description" value="{{event.description}}"
+      <input type="text" class="form-control {{#if errors.description}} is-invalid {{/if}}" name="description" value="{{event.description}}"
         placeholder="Enter description">
     </div>
-           <div class="invalid-feedback"></div>
+    <div class="invalid-feedback">
+             {{ errors.description }}
+    </div>
 
 
     <div class="form-group" style="width: 27%;">
       <label class="event-title">Location (Latitude)</label>
-      <input type="text" class="form-control" name="location[coordinates][1]" value="{{event.latitude}}"
+      <input type="text" class="form-control {{#if errors.latitude}} is-invalid {{/if}}" name="location[coordinates][1]" value="{{event.latitude}}"
         placeholder="Enter event latitude" id="lat">
     </div>
-           <div class="invalid-feedback"></div>
+          <div class="invalid-feedback">
+             {{ errors.latitude }}
+           </div>
 
 
     <div class="form-group" style="width: 27%;">
       <label class="event-title">Location (Longitude)</label>
-      <input type="text" class="form-control" name="location[coordinates][0]" value="{{event.longitude}}"
+      <input type="text" class="form-control  {{#if errors.longitude}} is-invalid {{/if}}" name="location[coordinates][0]" value="{{event.longitude}}"
         placeholder="Enter event longitude" id="lng">
     </div>
+    <div class="invalid-feedback">
+             {{ errors.longitude }}
+           </div>
+
 
     <label class="event-title">Date & Time</label>
     <div class="input-group mb-4" style="width: 27%;">
-      <input type="datetime-local" name="time"  placeholder="xx/xx/20xx 00:00" value=""  pattern="[0-9]{4}-[0-9]{2}-[0-9]{2};[0-9]{2}:[0-9]{2}" />
+      <input type="datetime-local" class="form-control  {{#if errors.time}} is-invalid {{/if}}" name="time"  placeholder="xx/xx/20xx 00:00" value="{{event.time}}"/>
     </div>
+    <div class="invalid-feedback">
+      {{ errors.time }}
+    </div>
+
 
     <label class="event-title">Categories</label>
     <div class="row col-sm-7" style="justify-content: space-between;">

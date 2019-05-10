@@ -83,3 +83,9 @@ module.exports.coordinates = (req, res, next) => {
         .then((events) => res.json(events.map(e => e.location)))
         .catch(next)
 }
+
+module.exports.location = (req, res, next) => {
+    Event.find()
+        .then((events) => res.json(events.map(e => e.location)))
+        .catch(next)
+}

@@ -1,35 +1,36 @@
-<nav class="navbar navbar-expand-lg navbar-light login" style="background-color: #F0F2F5"> 
-  <a class="navbar-brand" style="font-weight: bold" href="/"><img src="/images/birds-vector-feather-5.png" style="width: 5%;">FLOCK</imgsrc></a> 
-   <div class="nav-item dropdown" style="margin-right: 5%;">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.3rem;">{{session.name}}</a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="/profile">Profile</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="/events">Events</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="/logout">Logout</a>
+  <nav class="navbar navbar-expand-lg navbar-light login btn-primary" style=""> 
+    <a class="navbar-brand" style="font-weight: bold; color: white;" href="/"><img src="../images/birds-vector-feather-5.png" style="width: 5%; filter: invert(1); font-color: white">FLOCK</imgsrc></a> 
+    <div class="nav-item dropdown" style="margin-right: 5%;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.3rem; color: white;">{{session.name}}</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/profile">Profile</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/events">Events</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/logout">Logout</a>
+          </div>
         </div>
-      </div>
-</nav>
+  </nav>
 
 
-<div class="row" style="background-color:cornflowerblue; height: 220px;">
+
+<div class="row" style="background-color:#E5E7E8; height: 220px;">
     <div class="col" style="margin-top: 3%; margin-left: 12%">
-        <h1 style="color: whitesmoke">{{ event.title }}</h1>
-        <h3 style="color: whitesmoke; margin-left: 5%">CREATED BY: {{event.creater}}</h3>
+        <h1 style="color: black">{{ event.title }}</h1>
+        <h3 style="color: black; margin-left: 5%">Organizer: {{event.creater}}</h3>
     </div>
     <div class="col" style="margin-left: 18%; margin-top: 3%;">
         <form method="POST" action="/events/{{ event.id }}/join">
-        {{#if join}}
+        {{#if join }}
         <button class="btn btn-sm btn-success" style="padding: 5%; border-radius: 15px; font-size: 1.5rem" data-event-id="{{event._id}}">Already Joined</button>
         {{else }}
-        <button class="btn btn-sm btn-danger" style="padding: 5%; border-radius: 15px; font-size: 1.5rem" onclick="onClickJoinEvent(event)" data-event-id="{{event._id}}">Join Event</button>
-        {{/if}}
+        <button class="btn btn-sm btn-success" style="padding: 5%; border-radius: 15px; font-size: 1.5rem" onclick="onClickJoinEvent(event)" data-event-id="{{event._id}}">Join Event</button>
+        {{/if }}
 
         </form>
     </div>
 </div>
-<div class="row">
+<div id="event-page" class="row">
     <div clas="col" style="margin-top: 4%; margin-left: 10%">
       <img class="event-page-pic" src="../images/helena-lopes-463976-unsplash.jpg">
     </div>
@@ -37,11 +38,11 @@
 </div>
 <div style="margin-top: 5%; margin-left: 3%">
     <h2 style="color: cornflowerblue">Date and Time:</h2><br>
-    <h4> {{ event.time }}</h4>
+    <h3> {{ event.time }}</h3>
 </div>
 <div style="margin-top: 3%; margin-left: 3%">
     <h2 style="color: cornflowerblue">Description:</h2><br>
-    <h5>{{ event.description }}</h5>
+    <h3>{{ event.description }}</h3>
 </div>
 <br><br><br><br><br><br><br>
 <div>

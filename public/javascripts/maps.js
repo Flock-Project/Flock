@@ -33,29 +33,29 @@ class MyMap {
 }
 
 
-window.onload = () => {
+// window.onload = () => {
 
-    const mapContainer = document.getElementById('map');
+//     const mapContainer = document.getElementById('map');
 
-    if (mapContainer) {
-        const map = new MyMap(mapContainer)
-        if (markers) {
-            markers.forEach(function (place) {
-                map.addMarker(place.location.coordinates[1], place.location.coordinates[0])
-            });
-        }
+//     if (mapContainer) {
+//         const map = new MyMap(mapContainer)
+//         if (markers) {
+//             markers.forEach(function (place) {
+//                 map.addMarker(place.location.coordinates[1], place.location.coordinates[0])
+//             });
+//         }
 
-        map.onClick(event => {
-            const { lat, lng } = event.latLng.toJSON();
-            map.clearMarkers()
-            map.addMarker(lat, lng)
+//         map.onClick(event => {
+//             const { lat, lng } = event.latLng.toJSON();
+//             map.clearMarkers()
+//             map.addMarker(lat, lng)
    
-            document.getElementById('lat').value = lat.toFixed(3)
-            document.getElementById('lng').value = lng.toFixed(3)
-        })
-    }
+//             document.getElementById('lat').value = lat.toFixed(3)
+//             document.getElementById('lng').value = lng.toFixed(3)
+//         })
+//     }
    
-};
+// };
 
 
 

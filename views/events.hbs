@@ -1,131 +1,142 @@
-<script>
-    var markers = {{{ JSONPlaces }}};
-</script>
+  <nav class="navbar navbar-expand-lg navbar-light login btn-primary" style=""> 
+    <a class="navbar-brand" style="font-weight: bold; color: white;" href="/"><img src="../images/birds-vector-feather-5.png" style="width: 5%; filter: invert(1); font-color: white">FLOCK</imgsrc></a> 
+    <div class="nav-item dropdown" style="margin-right: 5%;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.3rem; color: white;">{{session.name}}</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/profile">Profile</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/events">Events</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/logout">Logout</a>
+          </div>
+        </div>
+  </nav>
 
-<nav class="navbar navbar-expand-lg navbar-light login" style="background-color: #F0F2F5"> 
-  <a class="navbar-brand" style="font-weight: bold" href="/"><img src="../images/birds-vector-feather-5.png" style="width: 5%;">FLOCK</imgsrc></a> 
-   <div class="nav-item dropdown" style="margin-right: 5%;S">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.3rem;">{{session.name}}</a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/profile">Profile</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/events">Events</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/logout">Logout</a>
+<div id="events">
+  <div id="map" style="width: 100%; height: 500px;"></div>
+</div>
+  
+
+  <form action="/events" method="GET" style="margin-top: 5px;">
+    
+    <div class="form-row" style="width: 70%; margin-left: 15%;">
+      <div class="form-group col-10">
+        <div class="input-group" >
+          <input type="text" class="form-control" name="title" placeholder="Type Event title...">
         </div>
       </div>
-</nav>
-
-<div id="map" style="width: 100%; height: 500px;"></div>
-
-<form action="/events" method="GET" style="margin-top: 5px;">
-  
-  <div class="form-row" style="width: 70%; margin-left: 15%;">
-    <div class="form-group col-10">
-      <div class="input-group" >
-        <input type="text" class="form-control" name="title" placeholder="Type Event title..." value="{{ title }}">
+      <div class="form-actions col-2">
+        <button type="submit" class="btn btn-block btn-primary">Search</button>                  
+        <a href="/events" class="btn btn-block btn-primary">Show All</a>  
       </div>
     </div>
-    <div class="form-actions col-2">
-      <button type="submit" class="btn btn-block btn-primary">Search</button>
+
+  <div class="row" style="margin-left: 25%;">
+    <div class="col-sm-2">
+      <div class="card card-width">
+        <div class="card-body">
+          <a href="#"><img class="event-icons" src="../images/social.png">
+          </a>
+        </div>
+      </div>  
+    </div>
+    <div class="col-sm-2">
+      <div class="card card-width">
+        <div class="card-body">
+          <a href="#"><img class="event-icons" src="../images/drinks.png">
+          </a>
+        </div>
+      </div>  
+    </div>
+    <div class="col-sm-2">
+      <div class="card card-width">
+        <div class="card-body">
+          <a href="#"><img class="event-icons" src="../images/cine.png">
+          </a>
+        </div>
+      </div>  
+    </div>
+    <div class="col-sm-2">
+      <div class="card card-width">
+        <div class="card-body">
+          <a href="#"><img class="event-icons" src="../images/comer.png">
+          </a>
+        </div>
+      </div>  
     </div>
   </div>
+  <br>
+  <div class="row" style="margin-left: 25%;">
+    <div class="col-sm-2">
+      <div class="card card-width">
+        <div class="card-body">
+          <a href="#"><img class="event-icons" src="../images/dance.png">
+          </a>
+        </div>
+      </div>  
+    </div>
+    <div class="col-sm-2">
+      <div class="card card-width">
+        <div class="card-body">
+          <a href="#"><img class="event-icons" src="../images/museo.png">
+          </a>
+        </div>
+      </div>  
+    </div>
+    <div class="col-sm-2">
+      <div class="card card-width">
+        <div class="card-body">
+          <a href="#"><img class="event-icons" src="../images/sports.png">
+          </a>
+        </div>
+      </div>  
+    </div>
+    <div class="col-sm-2">
+      <div class="card card-width">
+        <div class="card-body">
+          <a href="#"><img class="event-icons" src="../images/actividades.png">
+          </a>
+        </div>
+      </div>  
+    </div>
+  </div>
+  </form>
 
-<div class="row" style="margin-left: 20%;">
-  <div class="col-sm-2">
-    <div class="card card-width">
-      <div class="card-body">
-        <a href="#"><img class="event-icons" src="../images/social.png">
-        </a>
-      </div>
-    </div>  
-  </div>
-   <div class="col-sm-2">
-    <div class="card card-width">
-      <div class="card-body">
-        <a href="#"><img class="event-icons" src="../images/drinks.png">
-        </a>
-      </div>
-    </div>  
-  </div>
-  <div class="col-sm-2">
-    <div class="card card-width">
-      <div class="card-body">
-        <a href="#"><img class="event-icons" src="../images/cine.png">
-        </a>
-      </div>
-    </div>  
-  </div>
-  <div class="col-sm-2">
-    <div class="card card-width">
-      <div class="card-body">
-        <a href="#"><img class="event-icons" src="../images/comer.png">
-        </a>
-      </div>
-    </div>  
-  </div>
+<div style="margin-left: 45%; margin-top: 5%;">
+  <a href="/events/create" class="btn btn-primary" style="font-size: 1rem">Create Event</a>
 </div>
-<br>
-<div class="row" style="margin-left: 20%;">
-  <div class="col-sm-2">
-    <div class="card card-width">
-      <div class="card-body">
-        <a href="#"><img class="event-icons" src="../images/dance.png">
-        </a>
-      </div>
-    </div>  
-  </div>
-  <div class="col-sm-2">
-    <div class="card card-width">
-      <div class="card-body">
-        <a href="#"><img class="event-icons" src="../images/museo.png">
-        </a>
-      </div>
-    </div>  
-  </div>
-  <div class="col-sm-2">
-    <div class="card card-width">
-      <div class="card-body">
-        <a href="#"><img class="event-icons" src="../images/sports.png">
-        </a>
-      </div>
-    </div>  
-  </div>
-  <div class="col-sm-2">
-    <div class="card card-width">
-      <div class="card-body">
-        <a href="#"><img class="event-icons" src="../images/actividades.png">
-        </a>
-      </div>
-    </div>  
-  </div>
-</div>
-</form>
 
+  <label class="events-label">Events:</label>
+  <div class="list-group events-list">
+    {{#each events as |event| }}
+    <a href="/events/{{ event.id }}" class="list-group-item list-group-item-action" style="">
+  <div style="display: flex ; flex-direction: row; justify-content: space-between ">
+     <div>
+       <div class="d-flex w-100 justify-content-between">
+   <h1 class="mb-1" style="font-weight: bold; color: cornflowerblue; text-transform: uppercase;">{{ event.title }}</h1>
+ </div>
+        <p class="mb-1" style="font-weight: bold; color: darkgrey">Organizer: {{ event.creater }}</p>
+        <h4 class="mb-1" >{{ event.description }}</h4>
+        <p class="mb-1" style="font-weight: bold; color:red">{{ event.time }}</p>
 
-<label class="events-label">Events:</label>
-<div class="list-group events-list">
-  {{#each events as |event| }}
-  <a href="/events/{{ event.id }}" class="list-group-item list-group-item-action" style="">
-  <div class="d-flex w-100 justify-content-between">
-    <h2 class="mb-1" style="font-weight: bold; color: cornflowerblue; text-transform: uppercase;">{{ event.title }}</h2>
+     </div>
+     <div >
+         <p class="mb-1" style="text-transform: uppercase; color: darkkhaki">{{ event.categories }}</p>
+     </div>
+   </div>
+   <div>
+      
+      <form method="POST" action="/events/{{ event.id }}/join">
+        <button class="btn btn-sm btn-success" onclick="onClickJoinEvent(event)">
+          Join
+        </button>
+      </form>
+      <ul>
+        {{#each event.joiners as |user| }}
+          <li>{{user.name}}</li>
+        {{/each}}
+      </ul>
+    </div>
+    </a>
+    {{/each}}
   </div>
-    <p class="mb-1" style="font-weight: bold; color: black">{{ event.creater }}</p>
-    <p class="mb-1" style="font-weight: bold; color: black">{{ event.description }}</p>
-    <p class="mb-1" style="font-weight: bold; color:red">{{ event.time }}</p>
-    <p class="mb-1" style="text-transform: uppercase; color: darkkhaki">{{ event.categories }}</p>
-  </a>
-  <div>
-    <form method="POST" action="/events/{{ event.id }}/join">
-      <button class="btn btn-sm btn-secondary" onclick="onClickJoinEvent(event)">
-        Join
-      </button>
-    </form>
-    <ul>
-      {{#each event.joiners as |user| }}
-        <li>{{user.name}}</li>
-      {{/each}}
-    </ul>
-  </div>
-  {{/each}}
-</div>

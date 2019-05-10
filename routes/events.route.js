@@ -14,6 +14,8 @@ router.post('/events/:id/join', controller.join);
 
 router.get('/events/:eventId', controller.eventDetail);
 
+router.get('/events/:eventId/location', controller.location);
+
 
 
 

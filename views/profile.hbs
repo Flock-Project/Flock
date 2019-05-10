@@ -1,38 +1,37 @@
-<nav class="navbar navbar-expand-lg navbar-light login" style="background-color: #F0F2F5"> 
-  <a class="navbar-brand" style="font-weight: bold" href="/"><img src="../images/birds-vector-feather-5.png" style="width: 5%;">FLOCK</imgsrc></a> 
-   <div class="nav-item dropdown" style="margin-right: 5%;S">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.3rem;">{{session.name}}</a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/profile">Profile</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/events">Events</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/logout">Logout</a>
+  <nav class="navbar navbar-expand-lg navbar-light login btn-primary" style=""> 
+    <a class="navbar-brand" style="font-weight: bold; color: white;" href="/"><img src="../images/birds-vector-feather-5.png" style="width: 5%; filter: invert(1); font-color: white">FLOCK</imgsrc></a> 
+    <div class="nav-item dropdown" style="margin-right: 5%;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.3rem; color: white;">{{session.name}}</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/profile">Profile</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/events">Events</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/logout">Logout</a>
+          </div>
         </div>
-      </div>
-</nav>
+  </nav>
 
 <div class="profile-page">
-  <div class="card profile-card" style="width: 30.5rem; height: 42rem; border-width: 4px; border-color: cornflowerblue; border-radius: 2%;">
+  <div class="card profile-card" style="">
     {{#if session.avatarURL}}
       <img class="profile-pic" src="{{ session.avatarURL }}" class="img-fluid rounded">
     {{else }}
       <img class="profile-pic" src="../images/helena-lopes-463976-unsplash.jpg">
     {{/if}}
       <div class="card-body" style="text-align:center; border-top: 4px solid cornflowerblue;">
-        <h5 class="card-title" style=" font-size: 2rem; margin-top: 7%; ">{{ user.name }}</h5>
-        <p class="card-text" style="font-size: 1.5rem; margin-top: 7%; color: red;">{{ user.email }}</p>
+        <h5 class="card-title profile-name">{{ user.name }}</h5>
+        <p class="card-text profile-email">{{ user.email }}</p>
         {{#if user.description}}
-        <p class="card-text"  style="font-size: 1.5rem; font-style: italic; margin-top: 7%;">"{{ user.description }}"</p>
+        <p class="card-text profile-description">"{{ user.description }}"</p>
         {{else}}
-        <h3 class="card-text" style="font-size: 1.5rem; font-style: italic; margin-top: 7%;">"This is where you can write a description about yourself...."</p>
+        <h3 class="card-text profile-description">"This is where you can write a description about yourself...."</p>
         {{/if}}
       </div>
   </div>
 </div>
 
-<div class="profile-buttons" style="margin-top: 20%;">
-  <h1></h1>
-  <a href="/{{user._id}}/edit" class="btn btn-primary" style="font-size: 1.5rem; margin-left: 15%;">Edit Profile</a>
-  <a href="/events/create" class="btn btn-primary" style="font-size: 1.5rem; float: right; margin-right: 15%;">Create Event</a>
+<div class="profile-buttons">
+  <a href="/{{user._id}}/edit" class="btn btn-primary edit-btn">Edit Profile</a>
+  <a href="/events/create" class="btn btn-primary create-btn">Create Event</a>
 </div>
