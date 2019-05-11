@@ -7,15 +7,16 @@ body{
     background-image: url("../images/friends-having-fun.jpg");
     background-size: cover;
     width: 100%;
-    height: 860px;
+    height: 846px;
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 .dark-background{
     background-size: cover;
     width: 100%;
-    height: 860px;
+    height: 846px;
     background: black;
     opacity: .50;
 }

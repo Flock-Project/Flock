@@ -29,8 +29,7 @@ const userSchema= new mongoose.Schema({
   },
    social: {
     googleId: {
-      type: String,
-      unique: true
+      type: String
     },
   },
   avatarURL: String
