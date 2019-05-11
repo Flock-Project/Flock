@@ -55,6 +55,18 @@ module.exports.list = (req, res, next) => {
         .catch(error => next(error));
 }
 
+module.exports.eventDetail = (req, res, next) => {
+    const id = req.params.eventId;
+
+    Event.findById(id)
+        .then(event =>{
+            const join = event.joiners.map(el => el.toString()).includes(req.user.id.toString())
+
+            res.render('event-page', { event, join } )
+        })
+        .catch(next)
+}
+
 module.exports.join = (req, res, next) => {
     const id = req.params.id
     req.user
@@ -86,17 +98,7 @@ module.exports.leave = (req, res, next) => {
 }
 
 
-module.exports.eventDetail = (req, res, next) => {
-    const id = req.params.eventId;
 
-    Event.findById(id)
-        .then(event =>{
-            const join = event.joiners.map(el => el.toString()).includes(req.user.id.toString())
-
-            res.render('event-page', { event, join } )
-        })
-        .catch(next)
-}
 
 module.exports.coordinates = (req, res, next) => {
        const criteria = {};

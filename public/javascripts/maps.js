@@ -11,6 +11,21 @@ class MyMap {
         zoom: 14,
         center: { lat: 40.416775, lng: -3.703790 }
       });
+
+      const input = document.getElementById('places')
+
+      if (input) {
+        var searchBox = new google.maps.places.SearchBox(input);
+
+        searchBox.addListener('places_changed', () => {
+          var places = searchBox.getPlaces();
+      
+          if (places.length == 0) {
+            return;
+          }
+          this.googleMap.setCenter(places[0].geometry.location)
+        })
+      }
     }
    
     addMarker(lat, lng) {
