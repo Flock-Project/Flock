@@ -59,6 +59,6 @@ res.render('error');
 });
   
 
-app.listen(3000, () => console.log('Check'));
+app.listen(process.env.PORT || 3000, () => console.log('Check'));
 
 module.exports = app;
