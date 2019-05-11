@@ -26,7 +26,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./bin/www",
+    "start": "node app.js",
     "dev": "DEBUG=Flock:* nodemon -e hbs,js,css ./bin/www"
   },
   "author": "",
