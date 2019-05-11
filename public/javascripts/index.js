@@ -34,19 +34,30 @@ function initMap() {
   } else if (document.getElementById('events')) {
     addUsersToMap(myMap)
   }
-  else if (document.getElementById('event-page')) {
-    addLocationToMap(myMap)
-  }
+
 }
    
 function addUsersToMap(myMap) {
-  axios.get('/events/coordinates')
+  axios.get('/events/coordinates' + location.search)
     .then(response => {
-      response.data.forEach(coordinate => {
+      let coordinates = response.data
+
+      if (document.getElementById("event-page")) {
+        const id = document.getElementById("event-page").dataset.id;
+
+        coordinates = coordinates.filter(c => c.eventId === id)
+      }
+
+      coordinates.forEach(coordinate => {
         myMap.addMarker(
           coordinate.coordinates[1],
           coordinate.coordinates[0]
         )
+
+        myMap.googleMap.setCenter({
+          lat: coordinate.coordinates[1],
+          lng: coordinate.coordinates[0]
+        })
       })
     })
     .catch(console.log)

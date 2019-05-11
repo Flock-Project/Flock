@@ -35,7 +35,7 @@
     <div class="col-sm-2">
       <div class="card card-width">
         <div class="card-body">
-          <a href="#"><img class="event-icons" src="../images/social.png">
+          <a href="/events?category=social"><img class="event-icons" src="../images/social.png">
           </a>
         </div>
       </div>  
@@ -43,7 +43,7 @@
     <div class="col-sm-2">
       <div class="card card-width">
         <div class="card-body">
-          <a href="#"><img class="event-icons" src="../images/drinks.png">
+          <a href="/events?category=drinks"><img class="event-icons" src="../images/drinks.png">
           </a>
         </div>
       </div>  
@@ -51,7 +51,7 @@
     <div class="col-sm-2">
       <div class="card card-width">
         <div class="card-body">
-          <a href="#"><img class="event-icons" src="../images/cine.png">
+          <a href="/events?category=shows"><img class="event-icons" src="../images/cine.png">
           </a>
         </div>
       </div>  
@@ -59,7 +59,7 @@
     <div class="col-sm-2">
       <div class="card card-width">
         <div class="card-body">
-          <a href="#"><img class="event-icons" src="../images/comer.png">
+          <a href="/events?category=food"><img class="event-icons" src="../images/comer.png">
           </a>
         </div>
       </div>  
@@ -70,7 +70,7 @@
     <div class="col-sm-2">
       <div class="card card-width">
         <div class="card-body">
-          <a href="#"><img class="event-icons" src="../images/dance.png">
+          <a href="/events?category=dance"><img class="event-icons" src="../images/dance.png">
           </a>
         </div>
       </div>  
@@ -78,7 +78,7 @@
     <div class="col-sm-2">
       <div class="card card-width">
         <div class="card-body">
-          <a href="#"><img class="event-icons" src="../images/museo.png">
+          <a href="/events?category=culture"><img class="event-icons" src="../images/museo.png">
           </a>
         </div>
       </div>  
@@ -86,7 +86,7 @@
     <div class="col-sm-2">
       <div class="card card-width">
         <div class="card-body">
-          <a href="#"><img class="event-icons" src="../images/sports.png">
+          <a href="/events?category=sports"><img class="event-icons" src="../images/sports.png">
           </a>
         </div>
       </div>  
@@ -94,7 +94,7 @@
     <div class="col-sm-2">
       <div class="card card-width">
         <div class="card-body">
-          <a href="#"><img class="event-icons" src="../images/actividades.png">
+          <a href="/events?category=activities"><img class="event-icons" src="../images/actividades.png">
           </a>
         </div>
       </div>  
@@ -117,7 +117,7 @@
  </div>
         <p class="mb-1" style="font-weight: bold; color: darkgrey">Organizer: {{ event.creater }}</p>
         <h4 class="mb-1" >{{ event.description }}</h4>
-        <p class="mb-1" style="font-weight: bold; color:red">{{ event.time }}</p>
+        <p class="mb-1" style="font-weight: bold; color:red" >{{ event.time }}</p>
 
      </div>
      <div >
@@ -131,6 +131,7 @@
           Join
         </button>
       </form>
+      
       <ul>
         {{#each event.joiners as |user| }}
           <li>{{user.name}}</li>

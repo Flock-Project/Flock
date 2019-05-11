@@ -40,6 +40,10 @@ module.exports.list = (req, res, next) => {
         criteria.title = new RegExp(req.query.title, 'i');
     }
 
+    if (req.query.category) {
+        criteria.categories = { "$in": [req.query.category] }
+    }
+
     Event.find(criteria)
         .sort({ creationAt: -1 })
         .populate('joiners')
@@ -66,6 +70,22 @@ module.exports.join = (req, res, next) => {
         .catch(next)
 }
 
+module.exports.leave = (req, res, next) => {
+    const id = req.params.id
+    req.user
+
+    Event.findByIdAndUpdate(id, { $pull: {joiners: req.user.id} }, { new: true })
+        .then((event) => {
+            if (event) {
+                res.redirect(`/events/${id}`)
+            } else {
+                next(createError(404, 'Event not found'))
+            }
+        })
+        .catch(next)
+}
+
+
 module.exports.eventDetail = (req, res, next) => {
     const id = req.params.eventId;
 
@@ -79,13 +99,15 @@ module.exports.eventDetail = (req, res, next) => {
 }
 
 module.exports.coordinates = (req, res, next) => {
-    Event.find()
-        .then((events) => res.json(events.map(e => e.location)))
-        .catch(next)
-}
+       const criteria = {};
 
-module.exports.location = (req, res, next) => {
-    Event.find()
-        .then((events) => res.json(events.map(e => e.location)))
+    if (req.query.category) {
+        criteria.categories = { "$in": [req.query.category] }
+    }
+
+    Event.find(criteria)
+        .then((events) => res.json(events.map(e => {
+            return { ...e.location, eventId: e.id  }
+        })))
         .catch(next)
 }

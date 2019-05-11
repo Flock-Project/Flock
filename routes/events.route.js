@@ -12,12 +12,9 @@ router.get('/events/coordinates', controller.coordinates);
 
 router.post('/events/:id/join', controller.join);
 
+router.post('/events/:id/leave', controller.leave);
+
 router.get('/events/:eventId', controller.eventDetail);
-
-router.get('/events/:eventId/location', controller.location);
-
-
-
 
 
 
