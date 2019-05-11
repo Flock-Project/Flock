@@ -34,6 +34,7 @@ module.exports.doCreate = (req, res, next) => {
 }
 
 module.exports.list = (req, res, next) => {
+    const user = req.user
     const criteria = {};
 
     if (req.query.title) {
@@ -50,7 +51,8 @@ module.exports.list = (req, res, next) => {
         .then(events => res.render('events', {
             events,
             JSONPlaces: JSON.stringify(events),
-            title: req.query.title
+            title: req.query.title,
+            user
         }))
         .catch(error => next(error));
 }
@@ -98,16 +100,8 @@ module.exports.leave = (req, res, next) => {
 }
 
 
-
-
 module.exports.coordinates = (req, res, next) => {
-       const criteria = {};
-
-    if (req.query.category) {
-        criteria.categories = { "$in": [req.query.category] }
-    }
-
-    Event.find(criteria)
+    Event.find()
         .then((events) => res.json(events.map(e => {
             return { ...e.location, eventId: e.id  }
         })))

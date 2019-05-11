@@ -1,18 +1,5 @@
 function onClickJoinEvent(e) {
   // e.preventDefault();
-  // $(".join" ).toggle();
-//   var join = 0;
-//   totalJoiners.html("$" + price);
-
-
-//   $(".btn-join").click(function(){
-//     $(".join").toggle();
-//     if ($(".join").css("display","block")){
-//         join++;
-//     } 
-//     totalJoiners.html("$" + join);
-
-// });
 
   const eventId = e.target.dataset.eventId;
  
@@ -47,7 +34,7 @@ function addUsersToMap(myMap) {
 
         coordinates = coordinates.filter(c => c.eventId === id)
       }
-
+console.log('IN')
       coordinates.forEach(coordinate => {
         myMap.addMarker(
           coordinate.coordinates[1],
@@ -63,18 +50,7 @@ function addUsersToMap(myMap) {
     .catch(console.log)
 }
    
-function addLocationToMap(myMap) {
-  axios.get('/events/:eventId/location')
-    .then(response => {
-      response.data.eventID(coordinate => {
-        myMap.addMarker(
-          coordinate.coordinates[1],
-          coordinate.coordinates[0]
-        )
-     })
-    })
-    .catch(console.log)
-}
+
 
 function setFormMapListeners(myMap) {
   myMap.onClick((event) => {

@@ -125,12 +125,19 @@
      </div>
    </div>
    <div>
-      
-      <form method="POST" action="/events/{{ event.id }}/join">
-        <button class="btn btn-sm btn-success" onclick="onClickJoinEvent(event)">
-          Join
-        </button>
-      </form>
+      {{#joined event.joiners ../user.id}}
+        <form method="POST" action="/events/{{ event.id }}/join">
+          <button class="btn btn-sm btn-danger" onclick="onClickJoinEvent(event)">
+            Leave
+          </button>
+        </form>
+      {{else}}
+        <form method="POST" action="/events/{{ event.id }}/join">
+          <button class="btn btn-sm btn-success" onclick="onClickJoinEvent(event)">
+            Join
+          </button>
+        </form>
+      {{/joined}}
       
       
       <ul>
