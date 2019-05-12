@@ -12,12 +12,14 @@
         </div>
   </nav>
 
-
+    
 
 <div class="row" style="background-color:#E5E7E8; height: 220px;">
     <div class="col" style="margin-top: 3%; margin-left: 12%">
         <h1 style="color: black">{{ event.title }}</h1>
-        <h3 style="color: black; margin-left: 5%">Organizer: {{event.creater}}</h3>
+            {{#organizer event.creater ../user.id}}
+        <h3 style="color: black; margin-left: 5%">Organizer: <a href="/profile-card/{{ user._id }}" >{{event.creater}}</a></h3>
+          {{/organizer}}
     </div>
     <div class="col" style="margin-left: 18%; margin-top: 3%;">
         <form method="POST" action="/events/{{ event.id }}/join">
