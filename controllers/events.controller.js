@@ -99,8 +99,15 @@ module.exports.leave = (req, res, next) => {
         .catch(next)
 }
 
+
 module.exports.coordinates = (req, res, next) => {
-      Event.find()
+    const criteria = {};
+
+    if (req.query.category) {
+        criteria.categories = { "$in": [req.query.category] }
+    }
+
+    Event.find(criteria)
         .then((events) => res.json(events.map(e => {
             return { ...e.location, eventId: e.id  }
         })))

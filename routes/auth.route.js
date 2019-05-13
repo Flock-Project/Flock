@@ -14,9 +14,7 @@ router.post('/login', controller.doLogin);
 
 router.get('/profile', secure.isAuthenticated, controller.profile);
 router.post('/profile', secure.isAuthenticated, storage.single('avatar'), controller.doProfile);
-
-router.get('/profile-card/:id', secure.isAuthenticated, controller.userDetail)
-
+    
 router.get('/authenticate/google', passport.authenticate('google-auth', { scope: ['openid', 'profile', 'email'] }))
 router.get('/authenticate/:idp/callback', controller.loginWithIDPCallback)
 
