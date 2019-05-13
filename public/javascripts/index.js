@@ -34,6 +34,7 @@ function addUsersToMap(myMap) {
 
         coordinates = coordinates.filter(c => c.eventId === id)
       }
+      
       coordinates.forEach(coordinate => {
         myMap.addMarker(
           coordinate.coordinates[1],

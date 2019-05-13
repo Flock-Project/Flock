@@ -17,9 +17,9 @@
 <div class="row" style="background-color:#E5E7E8; height: 220px;">
     <div class="col" style="margin-top: 3%; margin-left: 12%">
         <h1 style="color: black">{{ event.title }}</h1>
-            {{#organizer event.creater ../user.id}}
-        <h3 style="color: black; margin-left: 5%">Organizer: <a href="/profile-card/{{ user._id }}" >{{event.creater}}</a></h3>
-          {{/organizer}}
+            {{!-- {{#organizer event.creater ../user.id}} --}}
+        <h3 style="color: black; margin-left: 5%">Organizer: <a href="/profile-card/5cd0459fa8065323b818584c" >{{event.creater}}</a></h3>
+          {{!-- {{/organizer}} --}}
     </div>
     <div class="col" style="margin-left: 18%; margin-top: 3%;">
         <form method="POST" action="/events/{{ event.id }}/join">
@@ -36,7 +36,7 @@
         </form>
     </div>
 </div>
-<div id="event-page" class="row" data-id="{{event.id}}">
+<div id="event-page" class="row" data-id="{{ event.id }}">
     <div clas="col" style="margin-top: 4%; margin-left: 10%">
       <img class="event-page-pic" src="../images/helena-lopes-463976-unsplash.jpg">
     </div>

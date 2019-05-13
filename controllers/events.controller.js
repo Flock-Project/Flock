@@ -99,9 +99,8 @@ module.exports.leave = (req, res, next) => {
         .catch(next)
 }
 
-
 module.exports.coordinates = (req, res, next) => {
-    Event.find()
+      Event.find()
         .then((events) => res.json(events.map(e => {
             return { ...e.location, eventId: e.id  }
         })))
