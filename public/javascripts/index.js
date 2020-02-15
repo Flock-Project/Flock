@@ -1,5 +1,4 @@
 function onClickJoinEvent(e) {
-  // e.preventDefault();
 
   const eventId = e.target.dataset.eventId;
  

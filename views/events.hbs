@@ -1,6 +1,9 @@
   <nav class="navbar navbar-expand-lg navbar-light login btn-primary" style=""> 
-    <a class="navbar-brand" style="font-weight: bold; color: white;" href="/"><img src="../images/birds-vector-feather-5.png" style="width: 5%; filter: invert(1); font-color: white"></imgsrc>FLOCK</a> 
-    <div class="nav-item dropdown" style="margin-right: 5%;">
+    <div class="row">
+      <div class="col">
+      <a class="navbar-brand" style="font-weight: bold; color: white;" href="/"><img  class="feather" src="../images/birds-vector-feather-5.png">FLOCK</imgsrc></a> 
+    </div>
+    <div class="nav-item dropdown col" style="margin-right: 5%;">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.3rem; color: white;">{{session.name}}</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="/profile">Profile</a>
@@ -10,6 +13,7 @@
             <a class="dropdown-item" href="/logout">Logout</a>
           </div>
         </div>
+        </div>
   </nav>
 
 <div id="events">
@@ -17,18 +21,17 @@
 </div>
   
 
-  <form action="/events" method="GET" style="margin-top: 5px;">
-    
-    <div class="form-row" style="width: 70%; margin-left: 15%;">
+  <form action="/events" method="GET" style="margin-top: 5px;">    
+    <div class="form-row" style="margin-left: 6%;">
       <div class="form-group col-10">
-        <div class="input-group" >
-          <input type="text" class="form-control" name="title" placeholder="Type Event title...">
+        <div class="input-group">
+          <input type="text" class="form-control" name="title" placeholder="Type Event title..." >
         </div>
       </div>
       <div class="form-actions col-2">
-        <button type="submit" class="btn btn-block btn-primary">Search</button>                  
-        <a href="/events" class="btn btn-block btn-primary">Show All</a>  
+        <button type="submit" class="btn btn-block btn-primary event-buttons" style="width: 60%; margi-left: 5%">Search</button>                  
       </div>
+      <div style="margin-left: 83.5%; width: 10%"> <a href="/events" class="btn btn-block btn-primary">Show All</a>  </div>
     </div>
 
   <div class="row" style="margin-left: 25%;">

@@ -1,6 +1,9 @@
   <nav class="navbar navbar-expand-lg navbar-light login btn-primary" style=""> 
-    <a class="navbar-brand" style="font-weight: bold; color: white;" href="/"><img src="../images/birds-vector-feather-5.png" style="width: 5%; filter: invert(1); font-color: white">FLOCK</imgsrc></a> 
-    <div class="nav-item dropdown" style="margin-right: 5%;">
+    <div class="row">
+      <div class="col">
+      <a class="navbar-brand" style="font-weight: bold; color: white;" href="/"><img  class="feather" src="../images/birds-vector-feather-5.png">FLOCK</imgsrc></a> 
+    </div>
+    <div class="nav-item dropdown col" style="margin-right: 5%;">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.3rem; color: white;">{{session.name}}</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="/profile">Profile</a>
@@ -10,10 +13,11 @@
             <a class="dropdown-item" href="/logout">Logout</a>
           </div>
         </div>
+        </div>
   </nav>
 
-<div class="profile-page">
-  <div class="card profile-card" style="">
+<div class="profile-page ">
+  <div class="card profile-card">
     {{#if session.avatarURL}}
       <img class="profile-pic" src="{{ session.avatarURL }}" class="img-fluid rounded">
     {{else }}

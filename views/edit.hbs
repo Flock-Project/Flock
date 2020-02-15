@@ -1,6 +1,9 @@
   <nav class="navbar navbar-expand-lg navbar-light login btn-primary" style=""> 
-    <a class="navbar-brand" style="font-weight: bold; color: white;" href="/"><img src="../images/birds-vector-feather-5.png" style="width: 5%; filter: invert(1); font-color: white"></imgsrc>FLOCK</a> 
-    <div class="nav-item dropdown" style="margin-right: 5%;">
+    <div class="row">
+      <div class="col">
+      <a class="navbar-brand" style="font-weight: bold; color: white;" href="/"><img  class="feather" src="../images/birds-vector-feather-5.png">FLOCK</imgsrc></a> 
+    </div>
+    <div class="nav-item dropdown col" style="margin-right: 5%;">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.3rem; color: white;">{{session.name}}</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="/profile">Profile</a>
@@ -10,29 +13,31 @@
             <a class="dropdown-item" href="/logout">Logout</a>
           </div>
         </div>
+        </div>
   </nav>
 
 
 <div class="profile-page">
-    <div class="card profile-card" style="width: 30.5rem; height: 42rem; border-width: 4px; border-color:cornflowerblue; border-radius: 2%;">
+    <div class="card profile-card">
     {{#if session.avatarURL}}
         <img class="profile-pic" src="{{ session.avatarURL }}" class="img-fluid rounded">
     {{else }}
         <img class="profile-pic" src="../images/helena-lopes-463976-unsplash.jpg">
     {{/if}}
     <form action="/profile" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" name="avatar" id="avatar">
-                <label class="custom-file-label" for="avatar">Change Profile Pic</label>
+     
+        <div class="card-body edit-card" style="text-align:center;">
+               <div class="form-group edit-pic">
+            <div class="custom-file" >
+                <input type="file" class="custom-file-input" name="avatar" id="avatar" >
+                <label class="custom-file-label" for="avatar" >Change Profile Pic</label>
             </div>
         </div>
-        <div class="card-body" style="text-align:center;">
-            <input type="text" name="name" class="form-control {{#if errors.name}} is-invalid {{/if}}" placeholder="{{user.name}}" value="{{ user.name }}"/>
+            <input type="text" name="name" class="edit-name form-control {{#if errors.name}} is-invalid {{/if}}" placeholder="{{user.name}}" value="{{ user.name }}"/>
                 <div class="invalid-feedback">
                     {{ errors.name }}
                 </div> 
-            <p class="card-text" style="font-size: 1.5rem;">{{ user.email }}</p>
+            <p class="card-text profile-email">{{ user.email }}</p>
             <input type="text" name="description" class="form-control {{#if errors.description}} is-invalid {{/if}}" placeholder="This is where you can write a description about yourself...." value="{{ user.description }}"/>
                 <div class="invalid-feedback">
                     {{ errors.description }}
@@ -44,3 +49,4 @@
     </div>
 </div>
 </form>
+
